@@ -1,9 +1,27 @@
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
 
+  const [mouseX, setMouseX] = useState(-1);
+  const [mouseY, setMouseY] = useState(-1);
+
+  const svgMaskSize = 400;
+  const svgStyle = {
+    maskImage: 'radial-gradient(rgba(0,0,0,1), rgba(0,0,0,0))',
+    maskSize: `${svgMaskSize}px ${svgMaskSize}px`,
+    maskRepeat: 'no-repeat',
+    maskPosition: `${mouseX - svgMaskSize/2}px ${mouseY - svgMaskSize/2}px`,
+
+    WebkitMaskImage: 'radial-gradient(rgba(0,0,0,1), rgba(0,0,0,0))',
+    WebkitMaskSize: `${svgMaskSize}px ${svgMaskSize}px`,
+    WebkitMaskRepeat: 'no-repeat',
+    WebkitMaskPosition: `${mouseX - svgMaskSize/2}px ${mouseY - svgMaskSize/2}px`,
+  };
+
   function handleMouseMove(e) {
-    console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+    setMouseX(e.nativeEvent.offsetX);
+    setMouseY(e.nativeEvent.offsetY);
   }
 
   return (
@@ -16,7 +34,7 @@ function App() {
 
       <div className="title">
         <span onMouseMove={handleMouseMove}>ALGORITHM
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <svg style={svgStyle} xmlns="http://www.w3.org/2000/svg">
             <defs>
               <radialGradient id="RadialGradient1">
                 <stop offset="0%" stopColor="red"/>
