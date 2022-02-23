@@ -8,12 +8,12 @@ function App() {
 
   const svgMaskSize = 400;
   const svgStyle = {
-    maskImage: 'radial-gradient(rgba(0,0,0,1), rgba(0,0,0,0))',
+    maskImage: 'radial-gradient(closest-side, rgba(0,0,0,1), rgba(0,0,0,0))',
     maskSize: `${svgMaskSize}px ${svgMaskSize}px`,
     maskRepeat: 'no-repeat',
     maskPosition: `${mouseX - svgMaskSize/2}px ${mouseY - svgMaskSize/2}px`,
 
-    WebkitMaskImage: 'radial-gradient(rgba(0,0,0,1), rgba(0,0,0,0))',
+    WebkitMaskImage: 'radial-gradient(closest-side, rgba(0,0,0,1), rgba(0,0,0,0))',
     WebkitMaskSize: `${svgMaskSize}px ${svgMaskSize}px`,
     WebkitMaskRepeat: 'no-repeat',
     WebkitMaskPosition: `${mouseX - svgMaskSize/2}px ${mouseY - svgMaskSize/2}px`,
