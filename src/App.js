@@ -6,7 +6,7 @@ function App() {
   const [mouseX, setMouseX] = useState(-1);
   const [mouseY, setMouseY] = useState(-1);
 
-  const svgMaskSize = 400;
+  const svgMaskSize = (mouseX != -1) ? 400 : 0;
   const svgStyle = {
     maskImage: 'radial-gradient(closest-side, rgba(0,0,0,1), rgba(0,0,0,0))',
     maskSize: `${svgMaskSize}px ${svgMaskSize}px`,
@@ -24,6 +24,11 @@ function App() {
     setMouseY(e.nativeEvent.offsetY);
   }
 
+  function handleMouseOut(e) {
+    setMouseX(-1);
+    setMouseY(-1);
+  }
+
   return (
     <div className="App">
 
@@ -33,7 +38,8 @@ function App() {
       </div>
 
       <div className="title">
-        <span onMouseMove={handleMouseMove}>ALGORITHM
+        <span onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
+          ALGORITHM
           <svg style={svgStyle} xmlns="http://www.w3.org/2000/svg">
             <defs>
               <radialGradient id="RadialGradient1">
