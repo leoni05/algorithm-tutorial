@@ -8,12 +8,12 @@ function App() {
 
   const svgMaskSize = (mouseX !== -1) ? 1000 : 0;
   const svgStyle = {
-    maskImage: 'radial-gradient(closest-side, rgba(0,0,0,0.5), rgba(0,0,0,0))',
+    maskImage: 'radial-gradient(closest-side, rgba(0,0,0,0.7), rgba(0,0,0,0))',
     maskSize: `${svgMaskSize}px ${svgMaskSize}px`,
     maskRepeat: 'no-repeat',
     maskPosition: `${mouseX - svgMaskSize/2}px ${mouseY - svgMaskSize/2}px`,
 
-    WebkitMaskImage: 'radial-gradient(closest-side, rgba(0,0,0,1), rgba(0,0,0,0))',
+    WebkitMaskImage: 'radial-gradient(closest-side, rgba(0,0,0,0.7), rgba(0,0,0,0))',
     WebkitMaskSize: `${svgMaskSize}px ${svgMaskSize}px`,
     WebkitMaskRepeat: 'no-repeat',
     WebkitMaskPosition: `${mouseX - svgMaskSize/2}px ${mouseY - svgMaskSize/2}px`,
@@ -46,7 +46,7 @@ function App() {
               <stop offset="100%" stopColor="blue"/>
             </radialGradient>
             <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
-              <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#D2DCE5" strokeWidth="1"/>
+              <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#D2DCE5" strokeWidth="1.5"/>
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
