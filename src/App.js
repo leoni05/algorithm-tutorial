@@ -6,7 +6,7 @@ function App() {
   const [mouseX, setMouseX] = useState(-1);
   const [mouseY, setMouseY] = useState(-1);
 
-  const svgMaskSize = (mouseX !== -1) ? 1000 : 0;
+  const svgMaskSize = (mouseX !== -1) ? 900 : 0;
   const svgStyle = {
     maskImage: 'radial-gradient(closest-side, rgba(0,0,0,0.7), rgba(0,0,0,0))',
     maskSize: `${svgMaskSize}px ${svgMaskSize}px`,
@@ -37,8 +37,9 @@ function App() {
         <span>Contact</span>
       </div>
 
-      <div className="title">
+      <div className="title" onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
         <span>ALGORITHM</span>
+
         <svg style={svgStyle} xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="RadialGradient1">
@@ -51,12 +52,6 @@ function App() {
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
         </svg>
-
-        <div className="invisible-screen" onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
-          <span onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
-            ALGORITHM
-          </span>
-        </div>
 
       </div>
 
