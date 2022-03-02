@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Title from './Title';
+import SocialLine from './SocialLine';
 
 function App() {
   return (
