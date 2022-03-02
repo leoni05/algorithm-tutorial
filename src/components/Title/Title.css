@@ -1,0 +1,26 @@
+.title{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 200px;
+  font-weight: 700;
+}
+
+.title span{
+  cursor: pointer;
+}
+
+.title svg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
