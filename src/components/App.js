@@ -6,11 +6,8 @@ import SocialLine from './SocialLine';
 function App() {
   return (
     <div className="App">
-      <div className="social-line">
-        <span>Github</span>
-        <span>Contact</span>
-      </div>
-      <Title />
+      <SocialLine/>
+      <Title/>
     </div>
   );
 }
