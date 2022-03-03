@@ -1,0 +1,19 @@
+.title-bar{
+  position: absolute;
+  z-index: 1;
+
+  box-sizing: border-box;
+  padding-left: 40px;
+  border-bottom: 1px solid;
+
+  display:flex;
+  align-items: center;
+
+  width: 100%;
+  height: 80px;
+}
+
+.title-bar span{
+  font-weight: 700;
+  font-size: 28px;
+}
