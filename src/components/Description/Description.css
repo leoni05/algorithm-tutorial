@@ -1,0 +1,20 @@
+.description{
+  display: block;
+  flex: 1;
+
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.description-title{
+  font-weight: 700;
+  font-size: 60px;
+  margin-bottom: 40px;
+}
+
+.description p{
+  font-weight: 400;
+  font-size: 24px;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 0;
+}
