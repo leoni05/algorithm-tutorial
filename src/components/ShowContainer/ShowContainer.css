@@ -1,0 +1,46 @@
+.show-container{
+  position: relative;
+  width: calc(100vh - 160px);
+  height: calc(100vh - 160px);
+}
+
+.show-container svg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.show-help{
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  color: #fff;
+
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+
+  box-sizing: border-box;
+  padding: 155px 162px 0 162px;
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.start-button{
+  width: 144px;
+  height: 82px;
+  margin: 160px auto 0;
+
+  font-family: 'Noto Sans';
+  font-weight: 600;
+  font-size: 60px;
+  text-align: center;
+
+  border-radius: 50%;
+  border: 1px solid;
+}
