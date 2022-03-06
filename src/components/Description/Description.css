@@ -1,6 +1,7 @@
 .description{
   display: block;
   flex: 1;
+  min-width: 600px;
 
   padding: 40px;
   box-sizing: border-box;

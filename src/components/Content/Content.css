@@ -4,5 +4,19 @@
   padding: 80px 0;
   box-sizing: border-box;
 
+  overflow: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
   display: flex;
+}
+
+.content::-webkit-scrollbar{
+  display: none;
+}
+
+@media screen and (max-width: 768px){
+  .content{
+    flex-direction: column;
+  }
 }
