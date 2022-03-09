@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, useRoutes, } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 
 import './App.css';
@@ -13,6 +13,7 @@ import NavSlider from './NavSlider';
 const routes = [
   { path: '/*', key: "SocialLine", Component: SocialLine },
   { path: '/*', key: "Title", Component: Title },
+  { path: '/algorithms/*', key: "Slider", Component: Slider },
 ];
 
 function App() {
