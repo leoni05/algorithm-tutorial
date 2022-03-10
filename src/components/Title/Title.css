@@ -32,6 +32,14 @@
   pointer-events: none;
 }
 
+.test-init-enter{
+  height: 100vh;
+}
+
+.test-init-exit{
+  height: 80px;
+}
+
 .test-enter{
   height: 80px;
 }

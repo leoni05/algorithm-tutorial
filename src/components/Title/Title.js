@@ -36,6 +36,12 @@ function Title() {
     setMouseY(-1);
   }
 
+  useEffect(() => {
+    if(location.pathname == "/")
+        nodeRef.current.classList.add('test-init-enter');
+    else nodeRef.current.classList.add('test-init-exit');
+  }, []);
+
   return (
     <CSSTransition in={location.pathname == "/"} timeout={300} classNames="test" nodeRef={nodeRef}>
       <div className="title-wrapper" ref={nodeRef}>
