@@ -30,6 +30,11 @@
   left: 0;
   top: 0;
   pointer-events: none;
+
+  mask-image: radial-gradient(closest-side, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  mask-repeat: no-repeat;
+  -webkit-mask-image: radial-gradient(closest-side, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  -webkit-mask-repeat: no-repeat,
 }
 
 .test-init-enter{

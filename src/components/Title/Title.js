@@ -15,14 +15,10 @@ function Title() {
 
   const svgMaskSize = (mouseX !== -1) ? 900 : 0;
   const svgStyle = {
-    maskImage: 'radial-gradient(closest-side, rgba(0,0,0,0.7), rgba(0,0,0,0))',
     maskSize: `${svgMaskSize}px ${svgMaskSize}px`,
-    maskRepeat: 'no-repeat',
     maskPosition: `${mouseX - svgMaskSize/2}px ${mouseY - svgMaskSize/2}px`,
 
-    WebkitMaskImage: 'radial-gradient(closest-side, rgba(0,0,0,0.7), rgba(0,0,0,0))',
     WebkitMaskSize: `${svgMaskSize}px ${svgMaskSize}px`,
-    WebkitMaskRepeat: 'no-repeat',
     WebkitMaskPosition: `${mouseX - svgMaskSize/2}px ${mouseY - svgMaskSize/2}px`,
   };
 
