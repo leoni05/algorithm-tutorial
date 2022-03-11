@@ -1,17 +1,15 @@
 .title-wrapper{
   position: absolute;
-
   top: 0;
   left: 0;
   z-index: 1;
 
   width: 100vw;
-  height: 100vh;
 }
 
 .title{
   position: relative;
-  width: 100%;
+  width: fit-content;
   height: 100%;
   overflow: hidden;
 
@@ -19,7 +17,6 @@
   align-items: center;
   justify-content: center;
 
-  font-size: 200px;
   font-weight: 700;
 }
 
@@ -40,33 +37,75 @@
 .test-init-enter{
   height: 100vh;
 }
+.test-init-enter .title{
+  /* width: 100%; */
+  margin-left: 0px;
+  font-size: 200px;
+}
 
 .test-init-exit{
   height: 80px;
 }
+.test-init-exit .title{
+  /* width: max-content; */
+  margin-left: 40px;
+  font-size: 28px;
+}
 
 .test-enter{
   height: 80px;
+}
+.test-enter .title{
+  /* width: max-content; */
+  margin-left: 40px;
+  font-size: 28px;
 }
 
 .test-enter-active{
   height: 100vh;
   transition: all 300ms;
 }
+.test-enter-active .title{
+  /* width: 100%; */
+  margin-left: 0px;
+  font-size: 200px;
+  transition: all 300ms;
+}
 
 .test-enter-done{
   height: 100vh;
 }
+.test-enter-done .title{
+  /* width: 100%; */
+  margin-left: 0px;
+  font-size: 200px;
+}
 
 .test-exit{
   height: 100vh;
+}
+.test-exit .title{
+  /* width: 100%; */
+  margin-left: 0px;
+  font-size: 200px;
 }
 
 .test-exit-active{
   height: 80px;
   transition: all 300ms;
 }
+.test-exit-active .title{
+  /* width: max-content; */
+  margin-left: 40px;
+  font-size: 28px;
+  transition: all 300ms;
+}
 
 .test-exit-done{
   height: 80px;
+}
+.test-exit-done .title{
+  /* width: max-content; */
+  margin-left: 40px;
+  font-size: 28px;
 }

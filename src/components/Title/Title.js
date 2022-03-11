@@ -42,6 +42,7 @@ function Title() {
     <CSSTransition in={location.pathname == "/"} timeout={300} classNames="test" nodeRef={nodeRef}>
       <div className="title-wrapper" ref={nodeRef}>
         <div className="title" onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
+          <div className="in-title"></div>
 
           <Link to={location.pathname == "/" ? "/algorithms" : "/"} className="text-link">
             <span>ALGORITHM</span>
