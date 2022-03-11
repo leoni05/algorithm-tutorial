@@ -37,78 +37,78 @@
   -webkit-mask-repeat: no-repeat,
 }
 
-.test-init-enter{
+.title-init-enter{
   height: 100vh;
   border-bottom: none;
 }
-.test-init-enter .title{
+.title-init-enter .title{
   transform: translate(-50%, -50%);
   left: 50%;
 }
 
-.test-init-exit{
+.title-init-exit{
   height: 80px;
   border-bottom: 1px solid;
 }
-.test-init-exit .title{
+.title-init-exit .title{
   transform: scale(0.14) translate(0%, -50%);
   left: 40px;
 }
 
-.test-enter{
+.title-enter{
   height: 80px;
   border-bottom: 1px solid;
 }
-.test-enter .title{
+.title-enter .title{
   transform: scale(0.14) translate(0%, -50%);
   left: 40px;
 }
 
-.test-enter-active{
+.title-enter-active{
   height: 100vh;
   border-bottom: 1px solid;
   transition: all 300ms;
 }
-.test-enter-active .title{
+.title-enter-active .title{
   transform: translate(-50%, -50%);
   left: 50%;
   transition: all 300ms;
 }
 
-.test-enter-done{
+.title-enter-done{
   height: 100vh;
   border-bottom: none;
 }
-.test-enter-done .title{
+.title-enter-done .title{
   transform: translate(-50%, -50%);
   left: 50%;
 }
 
-.test-exit{
+.title-exit{
   height: 100vh;
   border-bottom: 1px solid;
 }
-.test-exit .title{
+.title-exit .title{
   transform: translate(-50%, -50%);
   left: 50%;
 }
 
-.test-exit-active{
+.title-exit-active{
   height: 80px;
   border-bottom: 1px solid;
   transition: all 300ms;
 }
-.test-exit-active .title{
+.title-exit-active .title{
   transform: scale(0.14) translate(0%, -50%);
   left: 40px;
   transition: all 300ms;
 }
 
-.test-exit-done{
+.title-exit-done{
   height: 80px;
   border-bottom: 1px solid;
 }
-.test-exit-done .title{
+.title-exit-done .title{
   transform: scale(0.14) translate(0%, -50%);
   left: 40px;
 }

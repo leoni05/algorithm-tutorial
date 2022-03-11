@@ -34,12 +34,12 @@ function Title() {
 
   useEffect(() => {
     if(location.pathname == "/")
-        nodeRef.current.classList.add('test-init-enter');
-    else nodeRef.current.classList.add('test-init-exit');
+        nodeRef.current.classList.add('title-init-enter');
+    else nodeRef.current.classList.add('title-init-exit');
   }, []);
 
   return (
-    <CSSTransition in={location.pathname == "/"} timeout={300} classNames="test" nodeRef={nodeRef}>
+    <CSSTransition in={location.pathname == "/"} timeout={300} classNames="title" nodeRef={nodeRef}>
       <div className="title-wrapper" ref={nodeRef}>
         <div className="title-container" onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
 
