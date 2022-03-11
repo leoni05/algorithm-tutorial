@@ -43,11 +43,9 @@ function Title() {
       <div className="title-wrapper" ref={nodeRef}>
         <div className="title-container" onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
 
-          <span className="title">
-            <Link to={location.pathname == "/" ? "/algorithms" : "/"} className="text-link">
-              <span>ALGORITHM</span>
-            </Link>
-          </span>
+          <Link to={location.pathname == "/" ? "/algorithms" : "/"} className="text-link">
+            <span className="title">ALGORITHM</span>
+          </Link>
 
           <svg style={svgStyle} xmlns="http://www.w3.org/2000/svg">
             <defs>
