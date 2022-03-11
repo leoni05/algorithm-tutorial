@@ -7,20 +7,20 @@
   width: 100vw;
 }
 
-.title{
+.title-container{
   position: relative;
-  width: fit-content;
+  width: 100%;
   height: 100%;
   overflow: hidden;
+}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+.title{
+  position: absolute;
+  top: 50%;
   font-weight: 700;
 }
 
-.title svg{
+.title-container svg{
   position: absolute;
   width: 100%;
   height: 100%;
@@ -38,27 +38,27 @@
   height: 100vh;
 }
 .test-init-enter .title{
-  /* width: 100%; */
-  margin-left: 0px;
   font-size: 200px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .test-init-exit{
   height: 80px;
 }
 .test-init-exit .title{
-  /* width: max-content; */
-  margin-left: 40px;
   font-size: 28px;
+  left: 40px;
+  transform: translate(0%, -50%);
 }
 
 .test-enter{
   height: 80px;
 }
 .test-enter .title{
-  /* width: max-content; */
-  margin-left: 40px;
   font-size: 28px;
+  left: 40px;
+  transform: translate(0%, -50%);
 }
 
 .test-enter-active{
@@ -66,9 +66,9 @@
   transition: all 300ms;
 }
 .test-enter-active .title{
-  /* width: 100%; */
-  margin-left: 0px;
   font-size: 200px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   transition: all 300ms;
 }
 
@@ -76,18 +76,18 @@
   height: 100vh;
 }
 .test-enter-done .title{
-  /* width: 100%; */
-  margin-left: 0px;
   font-size: 200px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .test-exit{
   height: 100vh;
 }
 .test-exit .title{
-  /* width: 100%; */
-  margin-left: 0px;
   font-size: 200px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .test-exit-active{
@@ -95,9 +95,9 @@
   transition: all 300ms;
 }
 .test-exit-active .title{
-  /* width: max-content; */
-  margin-left: 40px;
   font-size: 28px;
+  left: 40px;
+  transform: translate(0%, -50%);
   transition: all 300ms;
 }
 
@@ -105,7 +105,7 @@
   height: 80px;
 }
 .test-exit-done .title{
-  /* width: max-content; */
-  margin-left: 40px;
   font-size: 28px;
+  left: 40px;
+  transform: translate(0%, -50%);
 }
