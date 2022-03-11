@@ -17,7 +17,9 @@
 .title{
   position: absolute;
   top: 50%;
+  transform-origin: 0 0;
   font-weight: 700;
+  font-size: 200px;
 }
 
 .title-container svg{
@@ -38,27 +40,24 @@
   height: 100vh;
 }
 .test-init-enter .title{
-  font-size: 200px;
-  left: 50%;
   transform: translate(-50%, -50%);
+  left: 50%;
 }
 
 .test-init-exit{
   height: 80px;
 }
 .test-init-exit .title{
-  font-size: 28px;
+  transform: scale(0.14) translate(0%, -50%);
   left: 40px;
-  transform: translate(0%, -50%);
 }
 
 .test-enter{
   height: 80px;
 }
 .test-enter .title{
-  font-size: 28px;
+  transform: scale(0.14) translate(0%, -50%);
   left: 40px;
-  transform: translate(0%, -50%);
 }
 
 .test-enter-active{
@@ -66,9 +65,8 @@
   transition: all 300ms;
 }
 .test-enter-active .title{
-  font-size: 200px;
-  left: 50%;
   transform: translate(-50%, -50%);
+  left: 50%;
   transition: all 300ms;
 }
 
@@ -76,18 +74,16 @@
   height: 100vh;
 }
 .test-enter-done .title{
-  font-size: 200px;
-  left: 50%;
   transform: translate(-50%, -50%);
+  left: 50%;
 }
 
 .test-exit{
   height: 100vh;
 }
 .test-exit .title{
-  font-size: 200px;
-  left: 50%;
   transform: translate(-50%, -50%);
+  left: 50%;
 }
 
 .test-exit-active{
@@ -95,9 +91,8 @@
   transition: all 300ms;
 }
 .test-exit-active .title{
-  font-size: 28px;
+  transform: scale(0.14) translate(0%, -50%);
   left: 40px;
-  transform: translate(0%, -50%);
   transition: all 300ms;
 }
 
@@ -105,7 +100,6 @@
   height: 80px;
 }
 .test-exit-done .title{
-  font-size: 28px;
+  transform: scale(0.14) translate(0%, -50%);
   left: 40px;
-  transform: translate(0%, -50%);
 }
