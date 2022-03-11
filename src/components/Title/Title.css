@@ -45,6 +45,9 @@
   transform: translate(-50%, -50%);
   left: 50%;
 }
+.title-init-enter svg{
+  opacity: 1;
+}
 
 .title-init-exit{
   height: 80px;
@@ -54,6 +57,9 @@
   transform: scale(0.14) translate(0%, -50%);
   left: 40px;
 }
+.title-init-exit svg{
+  opacity: 0;
+}
 
 .title-enter{
   height: 80px;
@@ -62,6 +68,9 @@
 .title-enter .title{
   transform: scale(0.14) translate(0%, -50%);
   left: 40px;
+}
+.title-enter svg{
+  opacity: 0;
 }
 
 .title-enter-active{
@@ -74,6 +83,10 @@
   left: 50%;
   transition: all 300ms;
 }
+.title-enter-active svg{
+  opacity: 1;
+  transition: all 300ms;
+}
 
 .title-enter-done{
   height: 100vh;
@@ -83,6 +96,9 @@
   transform: translate(-50%, -50%);
   left: 50%;
 }
+.title-enter-done svg{
+  opacity: 1;
+}
 
 .title-exit{
   height: 100vh;
@@ -91,6 +107,9 @@
 .title-exit .title{
   transform: translate(-50%, -50%);
   left: 50%;
+}
+.title-exit svg{
+  opacity: 1;
 }
 
 .title-exit-active{
@@ -103,6 +122,10 @@
   left: 40px;
   transition: all 300ms;
 }
+.title-exit-active svg{
+  opacity: 0;
+  transition: all 300ms;
+}
 
 .title-exit-done{
   height: 80px;
@@ -111,4 +134,7 @@
 .title-exit-done .title{
   transform: scale(0.14) translate(0%, -50%);
   left: 40px;
+}
+.title-exit-done svg{
+  opacity: 0;
 }
