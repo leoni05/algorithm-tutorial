@@ -32,15 +32,14 @@ function Title() {
     setMouseY(-1);
   }
 
-  useEffect(() => {
-    if(location.pathname == "/")
-        nodeRef.current.classList.add('title-init-enter');
-    else nodeRef.current.classList.add('title-init-exit');
-  }, []);
+  let titleWrapperClasses = "title-wrapper ";
+  if(location.pathname == "/")
+    titleWrapperClasses += "title-init-enter";
+  else titleWrapperClasses += "title-init-exit";
 
   return (
     <CSSTransition in={location.pathname == "/"} timeout={300} classNames="title" nodeRef={nodeRef}>
-      <div className="title-wrapper" ref={nodeRef}>
+      <div className={titleWrapperClasses} ref={nodeRef}>
         <div className="title-container" onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
 
           <Link to={location.pathname == "/" ? "/algorithms" : "/"} className="text-link">
