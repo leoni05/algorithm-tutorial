@@ -54,3 +54,9 @@
   border: 1px solid;
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 768px){
+  .show-help{
+    padding: 112px 40px 0 40px;
+  }
+}
