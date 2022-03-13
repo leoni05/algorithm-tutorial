@@ -52,8 +52,8 @@ function Title() {
                 <stop offset="0%" stopColor="red"/>
                 <stop offset="100%" stopColor="blue"/>
               </radialGradient>
-              <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
-                <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#D2DCE5" strokeWidth="3"/>
+              <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
+                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#D2DCE5" strokeWidth="1.5"/>
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid)" />
