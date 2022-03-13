@@ -1,7 +1,7 @@
 .show-container{
   position: relative;
-  min-width: calc(100vh - 160px);
-  min-height: calc(100vh - 160px);
+  min-width: calc(100vh - 120px);
+  min-height: calc(100vh - 120px);
 }
 
 @media screen and (max-width: 768px){
@@ -26,10 +26,11 @@
 
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 16px;
+  line-height: 23px;
 
   box-sizing: border-box;
-  padding: 155px 162px 0 162px;
+  padding: 112px 120px 0 120px;
 
   position: absolute;
   width: 100%;
@@ -39,13 +40,14 @@
 }
 
 .start-button{
-  width: 144px;
-  height: 82px;
+  width: 115px;
+  height: 60px;
   margin: 160px auto 0;
 
   font-family: 'Noto Sans';
   font-weight: 600;
-  font-size: 60px;
+  font-size: 48px;
+  line-height: 48px;
   text-align: center;
 
   border-radius: 50%;
