@@ -3,19 +3,22 @@
   flex: 1;
   min-width: 600px;
 
-  padding: 40px;
+  padding: 40px 60px 40px 40px;
   box-sizing: border-box;
 }
 
 .description-title{
   font-weight: 700;
-  font-size: 60px;
-  margin-bottom: 40px;
+  font-size: 48px;
+  line-height: 48px;
+  margin-bottom: 24px;
 }
 
 .description p{
   font-weight: 400;
-  font-size: 24px;
+  font-size: 16px;
+  line-height: 24px;
+  max-width: 696px;
   font-family: 'Noto Sans KR', sans-serif;
   margin-top: 0;
 }
