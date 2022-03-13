@@ -11,13 +11,14 @@
 .slide-item{
   font-weight: 700;
   font-size: 120px;
+  line-height: 150px;
   margin: 0 80px;
-  transition: font-size 0.3s;
+  transition: all 0.3s;
   white-space: nowrap;
   cursor: pointer;
 }
 
 .slide-item:hover{
   font-size: 140px;
-
+  line-height: 176px;
 }
