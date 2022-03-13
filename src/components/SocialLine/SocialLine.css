@@ -1,13 +1,13 @@
 .social-line{
   position: absolute;
-  top: 22px;
+  top: 12px;
   right: 0;
   z-index: 2;
 }
 
 .social-line span{
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 36px;
-  margin-right: 32px;
+  margin-right: 40px;
 }
