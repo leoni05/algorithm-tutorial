@@ -12,9 +12,9 @@ import NavSlider from './NavSlider';
 const routes = [
   { path: '/*', key: "Title", Component: Title },
   { path: '/*', key: "SocialLine", Component: SocialLine },
-  // { path: '/algorithms/*', key: "Slider", Component: Slider },
-  { path: '/algorithms/*', key: "Content", Component: Content },
-  { path: '/algorithms/*', key: "Slider", Component: NavSlider },
+  { path: '/algorithms/*', key: "Slider", Component: Slider },
+  // { path: '/algorithms/*', key: "Content", Component: Content },
+  // { path: '/algorithms/*', key: "Slider", Component: NavSlider },
 ];
 
 function App() {
