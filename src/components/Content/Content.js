@@ -5,9 +5,11 @@ import ShowContainer from '../ShowContainer';
 
 function Content() {
   return (
-    <div className="content">
-      <Description/>
-      <ShowContainer/>
+    <div className="content-wrapper">
+      <div className="content">
+        <Description/>
+        <ShowContainer/>
+      </div>
     </div>
   );
 }
