@@ -10,9 +10,11 @@ import Content from './Content';
 import NavSlider from './NavSlider';
 
 const routes = [
-  { path: '/*', key: "SocialLine", Component: SocialLine },
   { path: '/*', key: "Title", Component: Title },
-  { path: '/algorithms/*', key: "Slider", Component: Slider },
+  { path: '/*', key: "SocialLine", Component: SocialLine },
+  // { path: '/algorithms/*', key: "Slider", Component: Slider },
+  { path: '/algorithms/*', key: "Slider", Component: NavSlider },
+  { path: '/algorithms/*', key: "Content", Component: Content },
 ];
 
 function App() {
