@@ -47,7 +47,7 @@
   left: 50%;
 }
 .title-init-enter svg{
-  opacity: 1;
+  display: initial;
 }
 
 .title-init-exit{
@@ -59,7 +59,7 @@
   left: 40px;
 }
 .title-init-exit svg{
-  opacity: 0;
+  display: none;
 }
 
 .title-enter{
@@ -71,7 +71,7 @@
   left: 40px;
 }
 .title-enter svg{
-  opacity: 0;
+  display: none;
 }
 
 .title-enter-active{
@@ -85,8 +85,7 @@
   transition: all 500ms;
 }
 .title-enter-active svg{
-  opacity: 1;
-  transition: all 500ms;
+  display: none;
 }
 
 .title-enter-done{
@@ -98,7 +97,7 @@
   left: 50%;
 }
 .title-enter-done svg{
-  opacity: 1;
+  display: initial;
 }
 
 .title-exit{
@@ -110,7 +109,7 @@
   left: 50%;
 }
 .title-exit svg{
-  opacity: 1;
+  display: none;
 }
 
 .title-exit-active{
@@ -124,8 +123,7 @@
   transition: all 500ms;
 }
 .title-exit-active svg{
-  opacity: 0;
-  transition: all 500ms;
+  display: none;
 }
 
 .title-exit-done{
@@ -137,5 +135,5 @@
   left: 40px;
 }
 .title-exit-done svg{
-  opacity: 0;
+  display: none;
 }
