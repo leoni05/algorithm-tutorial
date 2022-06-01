@@ -14,11 +14,11 @@ function Slider() {
   useEffect(()=>{
     let classesString = "slider-wrapper ";
 
-    if(location.pathname != "/")
+    if(location.pathname !== "/")
       classesString += "slider-opacity-init-enter ";
     else classesString += "slider-opacity-init-exit ";
 
-    if(location.pathname.indexOf('/algorithms/contents/') != 0)
+    if(location.pathname.indexOf('/algorithms/contents/') !== 0)
       classesString += "slider-size-init-enter";
     else classesString += "slider-size-init-exit"
 
@@ -28,17 +28,17 @@ function Slider() {
   const [sizeInProps, setSizeInProps] = useState();
 
   useEffect(()=>{
-    if(location.pathname == "/algorithms"){
+    if(location.pathname === "/algorithms"){
       setSizeInProps(true);
     }
-    if(location.pathname.indexOf('/algorithms/contents/') == 0){
+    if(location.pathname.indexOf('/algorithms/contents/') === 0){
       setSizeInProps(false);
     }
   }, [location.pathname]);
 
   return (
 
-      <CSSTransition in={location.pathname != "/"} timeout={500}
+      <CSSTransition in={location.pathname !== "/"} timeout={500}
         classNames="slider-opacity" nodeRef={nodeRef} unmountOnExit>
         <CSSTransition in={sizeInProps} timeout={500}
           classNames="slider-size" nodeRef={nodeRef}>
