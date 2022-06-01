@@ -12,7 +12,7 @@ import NavSlider from './NavSlider';
 const routes = [
   { path: '/*', key: "Title", Component: Title },
   { path: '/*', key: "SocialLine", Component: SocialLine },
-  { path: '/algorithms/*', key: "Slider", Component: Slider },
+  { path: '/*', key: "Slider", Component: Slider },
   { path: '/algorithms/contents/*', key: "Content", Component: Content },
   // { path: '/algorithms/*', key: "Slider", Component: NavSlider },
 ];
