@@ -45,11 +45,11 @@ function Title() {
   }, []);
 
   return (
-    <CSSTransition in={location.pathname == "/"} timeout={500} classNames="title" nodeRef={nodeRef}>
+    <CSSTransition in={location.pathname === "/"} timeout={500} classNames="title" nodeRef={nodeRef}>
       <div className={titleWrapperClasses} ref={nodeRef}>
         <div className="title-container" onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
 
-          <Link to={location.pathname == "/" ? "/algorithms" : "/"} className="text-link">
+          <Link to={location.pathname === "/" ? "/algorithms" : "/"} className="text-link">
             <span className="title">ALGORITHM</span>
           </Link>
 
