@@ -50,6 +50,7 @@ function Slider() {
             </Link>
             <span className="slide-item">Stack</span>
           </div>
+          <div className="border-bg"></div>
         </div>
 
       </CSSTransition>
