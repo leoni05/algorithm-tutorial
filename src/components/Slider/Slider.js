@@ -37,7 +37,6 @@ function Slider() {
   }, [location.pathname]);
 
   return (
-
       <CSSTransition in={location.pathname !== "/"} timeout={500}
         classNames="slider-opacity" nodeRef={nodeRef} unmountOnExit>
         <CSSTransition in={sizeInProps} timeout={500}
