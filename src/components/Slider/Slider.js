@@ -28,17 +28,17 @@ function Slider() {
   const [sizeInProps, setSizeInProps] = useState();
 
   useEffect(()=>{
-    if(location.pathname === "/algorithms"){
-      setSizeInProps(true);
-    }
     if(location.pathname.indexOf('/algorithms/contents/') === 0){
       setSizeInProps(false);
+    }
+    else{
+      setSizeInProps(true);
     }
   }, [location.pathname]);
 
   return (
       <CSSTransition in={location.pathname !== "/"} timeout={500}
-        classNames="slider-opacity" nodeRef={nodeRef} unmountOnExit>
+        classNames="slider-opacity" nodeRef={nodeRef}>
         <CSSTransition in={sizeInProps} timeout={500}
           classNames="slider-size" nodeRef={nodeRef}>
 
