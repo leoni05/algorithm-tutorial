@@ -68,34 +68,42 @@
 /* 크기 관련 class들 */
 .slider-size-init-enter{
   height: 100%;
+  border-top: none;
 }
 
 .slider-size-init-exit{
   height: 60px;
+  border-top: 1px solid;
 }
 
 .slider-size-enter{
   height: 60px;
+  border-top: 1px solid;
 }
 
 .slider-size-enter-active{
   height: 100%;
+  border-top: 1px solid;
   transition: all 500ms;
 }
 
 .slider-size-enter-done{
   height: 100%;
+  border-top: none;
 }
 
 .slider-size-exit{
   height: 100%;
+  border-top: none;
 }
 
 .slider-size-exit-active{
   height: 60px;
+  border-top: 1px solid;
   transition: all 500ms;
 }
 
 .slider-size-exit-done{
   height: 60px;
+  border-top: 1px solid;
 }
