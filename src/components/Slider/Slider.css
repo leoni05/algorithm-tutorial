@@ -24,7 +24,6 @@
 .slide-item{
   font-size: 120px;
   line-height: 150px;
-  margin: 0 80px;
   transition: all 0.3s;
   white-space: nowrap;
   cursor: pointer;
@@ -90,6 +89,7 @@
 }
 .slider-size-init-enter .slide-item{
   font-weight: 700;
+  margin: 0 80px;
 }
 
 .slider-size-init-exit{
@@ -101,6 +101,7 @@
 }
 .slider-size-init-exit .slide-item{
   font-weight: 400;
+  margin: 0 588px;
 }
 
 .slider-size-enter{
@@ -112,6 +113,7 @@
 }
 .slider-size-enter .slide-item{
   font-weight: 400;
+  margin: 0 588px;
 }
 
 .slider-size-enter-active{
@@ -128,6 +130,7 @@
 }
 .slider-size-enter-active .slide-item{
   font-weight: 700;
+  margin: 0 80px;
   transition: all 500ms;
 }
 
@@ -143,6 +146,7 @@
 }
 .slider-size-enter-done .slide-item{
   font-weight: 700;
+  margin: 0 80px;
 }
 
 .slider-size-exit{
@@ -157,6 +161,7 @@
 }
 .slider-size-exit .slide-item{
   font-weight: 700;
+  margin: 0 80px;
 }
 
 .slider-size-exit-active{
@@ -170,6 +175,7 @@
 }
 .slider-size-exit-active .slide-item{
   font-weight: 400;
+  margin: 0 588px;
   transition: all 500ms;
 }
 
@@ -182,4 +188,5 @@
 }
 .slider-size-exit-done .slide-item{
   font-weight: 400;
+  margin: 0 588px;
 }
