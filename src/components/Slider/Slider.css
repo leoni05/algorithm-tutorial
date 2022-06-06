@@ -80,9 +80,6 @@
 
 /* 크기 관련 class들 */
 .slider-size-init-enter{
-  height: 100%;
-}
-.slider-size-init-enter .border-bg{
   height: calc(100% - 60px);
   height: -moz-calc(100% - 60px);
   height: -webkit-calc(100% - 60px);
@@ -90,13 +87,10 @@
   border-top: none;
 }
 .slider-size-init-enter .slider{
-  transform: none;
+  transform: translate(0, -30px);
 }
 
 .slider-size-init-exit{
-  height: 60px;
-}
-.slider-size-init-exit .border-bg{
   height: 60px;
   border-top: 1px solid;
 }
@@ -106,9 +100,6 @@
 
 .slider-size-enter{
   height: 60px;
-}
-.slider-size-enter .border-bg{
-  height: 60px;
   border-top: 1px solid;
 }
 .slider-size-enter .slider{
@@ -116,10 +107,6 @@
 }
 
 .slider-size-enter-active{
-  height: 100%;
-  transition: all 500ms;
-}
-.slider-size-enter-active .border-bg{
   height: calc(100% - 60px);
   height: -moz-calc(100% - 60px);
   height: -webkit-calc(100% - 60px);
@@ -128,14 +115,11 @@
   transition: all 500ms;
 }
 .slider-size-enter-active .slider{
-  transform: none;
+  transform: translate(0, -30px);
   transition: all 500ms;
 }
 
 .slider-size-enter-done{
-  height: 100%;
-}
-.slider-size-enter-done .border-bg{
   height: calc(100% - 60px);
   height: -moz-calc(100% - 60px);
   height: -webkit-calc(100% - 60px);
@@ -143,13 +127,10 @@
   border-top: none;
 }
 .slider-size-enter-done .slider{
-  transform: none;
+  transform: translate(0, -30px);
 }
 
 .slider-size-exit{
-  height: 100%;
-}
-.slider-size-exit .border-bg{
   height: calc(100% - 60px);
   height: -moz-calc(100% - 60px);
   height: -webkit-calc(100% - 60px);
@@ -157,14 +138,10 @@
   border-top: none;
 }
 .slider-size-exit .slider{
-  transform: none;
+  transform: translate(0, -30px);
 }
 
 .slider-size-exit-active{
-  height: 60px;
-  transition: all 500ms;
-}
-.slider-size-exit-active .border-bg{
   height:60px;
   border-top: 1px solid;
   transition: all 500ms;
@@ -175,9 +152,6 @@
 }
 
 .slider-size-exit-done{
-  height: 60px;
-}
-.slider-size-exit-done .border-bg{
   height:60px;
   border-top: 1px solid;
 }
