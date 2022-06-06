@@ -43,12 +43,14 @@ function Slider() {
           classNames="slider-size" nodeRef={nodeRef}>
 
         <div className={sliderWrapperClasses} ref={nodeRef}>
-          <div className="slider">
-            <span className="slide-item">Stack</span>
-            <Link to="/algorithms/contents/seg" className="text-link">
-              <span className="slide-item">Segment Tree</span>
-            </Link>
-            <span className="slide-item">Stack</span>
+          <div className="slider-container">
+            <div className="slider">
+              <span className="slide-item">Stack</span>
+              <Link to="/algorithms/contents/seg" className="text-link">
+                <span className="slide-item">Segment Tree</span>
+              </Link>
+              <span className="slide-item">Stack</span>
+            </div>
           </div>
           <div className="border-bg"></div>
         </div>
