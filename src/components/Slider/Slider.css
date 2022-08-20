@@ -29,10 +29,10 @@
   cursor: pointer;
 }
 
-.slide-item:hover{
+/* .slide-item:hover{
   font-size: 140px;
   line-height: 176px;
-}
+} */
 
 .border-bg{
   position: absolute;
