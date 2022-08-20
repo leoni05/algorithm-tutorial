@@ -13,7 +13,7 @@ const routes = [
   { path: '/*', key: "Title", Component: Title },
   { path: '/*', key: "SocialLine", Component: SocialLine },
   { path: '/*', key: "Slider", Component: Slider },
-  { path: '/algorithms/contents/*', key: "Content", Component: Content },
+  { path: '/*', key: "Content", Component: Content },
   // { path: '/algorithms/*', key: "Slider", Component: NavSlider },
 ];
 

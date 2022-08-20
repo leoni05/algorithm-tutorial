@@ -29,3 +29,27 @@
     flex-direction: column;
   }
 }
+
+.content-enter{
+    display: none;
+}
+
+.content-enter-active{
+  display: none;
+}
+
+.content-enter-done{
+  display: initial;
+}
+
+.content-exit{
+  display: initial;
+}
+
+.content-exit-active{
+  display: none;
+}
+
+.content-exit-done{
+  display: none;
+}

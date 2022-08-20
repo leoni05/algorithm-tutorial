@@ -2,15 +2,25 @@ import React from 'react';
 import './Content.css';
 import Description from '../Description';
 import ShowContainer from '../ShowContainer';
+import { CSSTransition } from 'react-transition-group'
+import { Link, useLocation } from 'react-router-dom'
 
 function Content() {
+  let location = useLocation();
+
   return (
+
+    <CSSTransition in={location.pathname === "/algorithms/contents/seg"}
+      timeout={250} classNames="content">
+
     <div className="content-wrapper">
       <div className="content">
         <Description/>
         <ShowContainer/>
       </div>
     </div>
+
+    </CSSTransition>
   );
 }
 
