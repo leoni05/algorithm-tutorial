@@ -24,7 +24,6 @@
 .slide-item{
   font-size: 120px;
   line-height: 150px;
-  transition: all 0.3s;
   white-space: nowrap;
   cursor: pointer;
 }
