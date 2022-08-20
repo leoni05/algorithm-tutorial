@@ -77,12 +77,12 @@
 .title-enter-active{
   height: 100vh;
   border-bottom: 1px solid;
-  transition: all 500ms;
+  transition: all 200ms;
 }
 .title-enter-active .title{
   transform: translate(-50%, -50%);
   left: 50%;
-  transition: all 500ms;
+  transition: all 200ms;
 }
 .title-enter-active svg{
   display: none;
@@ -115,12 +115,12 @@
 .title-exit-active{
   height: 60px;
   border-bottom: 1px solid;
-  transition: all 500ms;
+  transition: all 200ms;
 }
 .title-exit-active .title{
   transform: scale(0.15) translate(0%, -50%);
   left: 40px;
-  transition: all 500ms;
+  transition: all 200ms;
 }
 .title-exit-active svg{
   display: none;
