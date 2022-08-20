@@ -31,25 +31,65 @@
 }
 
 .content-enter{
-    display: none;
+  display: initial;
+}
+.content-enter .show-container{
+  opacity: 0%;
+}
+.content-enter .description{
+  transform: translateX(-100%);
 }
 
 .content-enter-active{
-  display: none;
+  display: initial;
+}
+.content-enter-active .show-container{
+  transition: all 400ms;
+  opacity: 100%;
+}
+.content-enter-active .description{
+  transition: all 400ms;
+  transform: translateX(0);
 }
 
 .content-enter-done{
   display: initial;
 }
+.content-enter-done .show-container{
+  opacity: 100%;
+}
+.content-enter-done .description{
+  transform: translateX(0);
+}
 
 .content-exit{
   display: initial;
 }
+.content-exit .show-container{
+  opacity: 100%;
+}
+.content-exit .description{
+  transform: translateX(0);
+}
 
 .content-exit-active{
-  display: none;
+  display: initial;
+}
+.content-exit-active .show-container{
+  transition: all 400ms;
+  opacity: 0%;
+}
+.content-exit-active .description{
+  transition: all 400ms;
+  transform: translateX(-100%);
 }
 
 .content-exit-done{
   display: none;
+}
+.content-exit-done .show-container{
+  opacity: 0%;
+}
+.content-exit-done .description{
+  transform: translateX(-100%);
 }

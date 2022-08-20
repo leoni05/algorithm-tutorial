@@ -15,8 +15,8 @@ function Content() {
 
     <div className="content-wrapper">
       <div className="content">
-        <Description/>
-        <ShowContainer/>
+        <Description className="description"/>
+        <ShowContainer className="show-container"/>
       </div>
     </div>
 
