@@ -25,10 +25,19 @@ function Slider() {
     setSliderWrapperClasses(classesString);
   }, []);
 
-  const [sizeInProps, setSizeInProps] = useState();
+  var initial_state;
+
+  if(location.pathname.indexOf('/algorithms/contents') === 0){
+    initial_state = false;
+  }
+  else{
+    initial_state = true;
+  }
+
+  const [sizeInProps, setSizeInProps] = useState(initial_state);
 
   useEffect(()=>{
-    if(location.pathname.indexOf('/algorithms/contents/') === 0){
+    if(location.pathname.indexOf('/algorithms/contents') === 0){
       setSizeInProps(false);
     }
     else{
