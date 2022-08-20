@@ -45,7 +45,7 @@ function Title() {
   }, []);
 
   return (
-    <CSSTransition in={location.pathname === "/"} timeout={300} classNames="title" nodeRef={nodeRef}>
+    <CSSTransition in={location.pathname === "/"} timeout={400} classNames="title" nodeRef={nodeRef}>
       <div className={titleWrapperClasses} ref={nodeRef}>
         <div className="title-container" onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
 
