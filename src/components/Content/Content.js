@@ -11,7 +11,7 @@ function Content() {
   return (
 
     <CSSTransition in={location.pathname === "/algorithms/contents/seg"}
-      timeout={250} classNames="content">
+      timeout={400} classNames="content">
 
     <div className="content-wrapper">
       <div className="content">
