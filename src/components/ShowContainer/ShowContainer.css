@@ -21,7 +21,7 @@
 
 .show-help{
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  /* backdrop-filter: blur(4px); */
   color: #fff;
 
   font-family: 'Noto Sans KR', sans-serif;
