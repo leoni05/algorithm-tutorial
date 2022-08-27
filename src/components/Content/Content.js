@@ -7,6 +7,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 function Content() {
   let location = useLocation();
+  const nodeRef = React.useRef(null);
 
   const contentWrapperClasses = "content-wrapper " +
     ((location.pathname === "/algorithms/contents/seg") ?
@@ -15,9 +16,9 @@ function Content() {
   return (
 
     <CSSTransition in={location.pathname === "/algorithms/contents/seg"}
-      timeout={400} classNames="content">
+      timeout={400} classNames="content" nodeRef={nodeRef}>
 
-    <div className={contentWrapperClasses}>
+    <div className={contentWrapperClasses} ref={nodeRef}>
       <div className="content">
         <Description className="description"/>
         <ShowContainer className="show-container"/>
