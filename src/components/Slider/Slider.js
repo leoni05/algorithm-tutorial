@@ -25,25 +25,7 @@ function Slider() {
     setSliderWrapperClasses(classesString);
   }, []);
 
-  var initial_state;
-
-  if(location.pathname.indexOf('/algorithms/contents') === 0){
-    initial_state = false;
-  }
-  else{
-    initial_state = true;
-  }
-
-  const [sizeInProps, setSizeInProps] = useState(initial_state);
-
-  useEffect(()=>{
-    if(location.pathname.indexOf('/algorithms/contents') === 0){
-      setSizeInProps(false);
-    }
-    else{
-      setSizeInProps(true);
-    }
-  }, [location.pathname]);
+  const sizeInProps = (location.pathname.indexOf('/algorithms/contents') !== 0);
 
   return (
       <CSSTransition in={location.pathname !== "/"} timeout={400}
