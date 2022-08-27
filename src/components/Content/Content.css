@@ -30,6 +30,26 @@
   }
 }
 
+.content-init-enter{
+  display: initial;
+}
+.content-init-enter .show-container{
+  opacity: 100%;
+}
+.content-init-enter .description{
+  transform: translateX(0);
+}
+
+.content-init-exit{
+  display: none;
+}
+.content-init-exit .show-container{
+  opacity: 0%;
+}
+.content-init-exit .description{
+  transform: translateX(-100%);
+}
+
 .content-enter{
   display: initial;
 }
