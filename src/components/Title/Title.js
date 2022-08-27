@@ -32,17 +32,9 @@ function Title() {
     setMouseY(-1);
   }
 
-  const [titleWrapperClasses, setTitleWrapperClasses] = useState();
-
-  useEffect(()=>{
-    let classesString = "title-wrapper ";
-
-    if(location.pathname === "/")
-      classesString += "title-init-enter";
-    else classesString += "title-init-exit";
-
-    setTitleWrapperClasses(classesString);
-  }, []);
+  const titleWrapperClasses = "title-wrapper " +
+    ((location.pathname === "/") ? "title-init-enter" :
+      "title-init-exit");
 
   return (
     <CSSTransition in={location.pathname === "/"} timeout={400} classNames="title" nodeRef={nodeRef}>
