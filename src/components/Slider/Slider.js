@@ -9,21 +9,13 @@ function Slider() {
 
   let location = useLocation();
 
-  const [sliderWrapperClasses, setSliderWrapperClasses] = useState();
-
-  useEffect(()=>{
-    let classesString = "slider-wrapper ";
-
-    if(location.pathname !== "/")
-      classesString += "slider-opacity-init-enter ";
-    else classesString += "slider-opacity-init-exit ";
-
-    if(location.pathname.indexOf('/algorithms/contents/') !== 0)
-      classesString += "slider-size-init-enter";
-    else classesString += "slider-size-init-exit"
-
-    setSliderWrapperClasses(classesString);
-  }, []);
+  const sliderWrapperClasses = "slider-wrapper "
+    + ((location.pathname !== "/") ?
+      "slider-opacity-init-enter "
+      : "slider-opacity-init-exit ")
+    + ((location.pathname.indexOf('/algorithms/contents/') !== 0) ?
+      "slider-size-init-enter"
+      : "slider-size-init-exit");
 
   const sizeInProps = (location.pathname.indexOf('/algorithms/contents') !== 0);
 
