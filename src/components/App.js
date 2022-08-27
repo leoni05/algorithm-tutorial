@@ -7,7 +7,6 @@ import Title from './Title';
 import SocialLine from './SocialLine';
 import Slider from './Slider';
 import Content from './Content';
-import NavSlider from './NavSlider';
 
 const routes = [
   { path: '/*', key: "Title", Component: Title },
