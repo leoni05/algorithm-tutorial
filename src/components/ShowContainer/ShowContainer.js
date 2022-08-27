@@ -27,8 +27,10 @@ function ShowContainer() {
           열락의 긴지라 피고 것이다. 자신과 우리 커다란 보라.
           무엇을 방지하는 피어나기 못할 천고에
         </div>
-        <div className="start-button">
-          Start
+        <div className="start-button-wrapper">
+          <div className="start-button">
+            Start
+          </div>
         </div>
       </div>
 
