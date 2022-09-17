@@ -9,10 +9,6 @@ function ShowContainer() {
     setIsShowing(false);
   }
 
-  // const titleWrapperClasses = "title-wrapper " +
-  //   ((location.pathname === "/") ? "title-init-enter" :
-  //     "title-init-exit");
-
   const showHelpClasses = "show-help" +
     ((isShowing) ? "" :
       " display-none");
@@ -30,7 +26,7 @@ function ShowContainer() {
             <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#000" strokeWidth="1"/>
           </pattern>
         </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
+        <rect width="100%" height="100%"   fill="url(#grid)" />
       </svg>
 
       <div className={showHelpClasses}>
