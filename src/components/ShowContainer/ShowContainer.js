@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './ShowContainer.css';
 
 function ShowContainer() {
+
+  const [isShowing, setIsShowing] = useState(true);
+
+  function startButtonOnClick() {
+    setIsShowing(false);
+  }
+
+  // const titleWrapperClasses = "title-wrapper " +
+  //   ((location.pathname === "/") ? "title-init-enter" :
+  //     "title-init-exit");
+
+  const showHelpClasses = "show-help" +
+    ((isShowing) ? "" :
+      " display-none");
+
   return (
     <div className="show-container">
 
@@ -18,7 +33,7 @@ function ShowContainer() {
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
 
-      <div className="show-help">
+      <div className={showHelpClasses}>
         <div>
           사람은 이 만물은 것은 때에, 방황하여도,
           웅대한 용기가 사막이다.
@@ -28,7 +43,7 @@ function ShowContainer() {
           무엇을 방지하는 피어나기 못할 천고에
         </div>
         <div className="start-button-wrapper">
-          <div className="start-button">
+          <div className="start-button" onClick={startButtonOnClick}>
             Start
           </div>
         </div>

@@ -39,6 +39,10 @@
   top: 0;
 }
 
+.show-help.display-none {
+  display: none;
+}
+
 .start-button-wrapper{
   width: 115px;
   height: 60px;
