@@ -31,13 +31,21 @@ function Slider() {
               <span className="slide-item">Aho-Corasick</span>
               <span className="slide-item">DFS</span>
               <span className="slide-item">BFS</span>
-              <span className="slide-item">Queue</span>
-              <span className="slide-item">Stack</span>
+              <Link to="/algorithms/contents/queue" className="text-link">
+                <span className="slide-item">Queue</span>
+              </Link>
+              <Link to="/algorithms/contents/stack" className="text-link">
+                <span className="slide-item">Stack</span>
+              </Link>
               <Link to="/algorithms/contents/seg" className="text-link">
                 <span className="slide-item">Segment Tree</span>
               </Link>
-              <span className="slide-item">Aho-Corasick</span>
-              <span className="slide-item">DFS</span>
+              <Link to="/algorithms/contents/aho" className="text-link">
+                <span className="slide-item">Aho-Corasick</span>
+              </Link>
+              <Link to="/algorithms/contents/dfs" className="text-link">
+                <span className="slide-item">DFS</span>
+              </Link>
               <span className="slide-item">BFS</span>
               <span className="slide-item">Queue</span>
               <span className="slide-item">Stack</span>
