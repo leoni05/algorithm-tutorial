@@ -13,7 +13,7 @@ function Content() {
   const [inProps, setInProps] = useState(
     algorithms.isShowingAlgorithm(location.pathname)
   );
-  const [pvPathname, setPvPathname] = useState('');
+  const [pvPathname, setPvPathname] = useState(location.pathname);
   const [firstExecuted, setFirstExecuted] = useState(true);
 
   const contentWrapperClasses = "content-wrapper " +
