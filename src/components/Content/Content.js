@@ -4,9 +4,11 @@ import Description from '../Description';
 import ShowContainer from '../ShowContainer';
 import { CSSTransition } from 'react-transition-group'
 import { Link, useLocation } from 'react-router-dom'
+import { useAlgorithms } from '../Algorithms';
 
 function Content() {
   let location = useLocation();
+  let algorithms = useAlgorithms();
   const nodeRef = React.useRef(null);
 
   const contentWrapperClasses = "content-wrapper " +
@@ -20,7 +22,8 @@ function Content() {
 
     <div className={contentWrapperClasses} ref={nodeRef}>
       <div className="content">
-        <Description className="description"/>
+        <Description className="description" title={algorithms.seg.title}
+          description={algorithms.seg.description}/>
         <ShowContainer className="show-container"/>
       </div>
     </div>
