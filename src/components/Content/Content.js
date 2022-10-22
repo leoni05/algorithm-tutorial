@@ -28,11 +28,13 @@ function Content() {
     let delay = 0;
 
     setInProps(false);
-    if (algorithms.isShowingAlgorithm(pvPathname)) {
-      delay = 400;
-    }
     if(algorithms.isShowingAlgorithm(location.pathname)){
-      setTimeout(()=>{ setInProps(true);}, delay);
+      if (algorithms.isShowingAlgorithm(pvPathname)) {
+        setTimeout(()=>{ setInProps(true);}, 400);
+      }
+      else{
+        setInProps(true);
+      }
     }
 
     setPvPathname(location.pathname)
