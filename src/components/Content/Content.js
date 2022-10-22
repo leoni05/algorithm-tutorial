@@ -9,16 +9,27 @@ import { useAlgorithms } from '../Algorithms';
 function Content() {
   let location = useLocation();
   let algorithms = useAlgorithms();
+  let nowAlgObj = algorithms.getAlgorithm(location.pathname);
+
   const nodeRef = React.useRef(null);
   const [inProps, setInProps] = useState(
     algorithms.isShowingAlgorithm(location.pathname)
   );
   const [pvPathname, setPvPathname] = useState(location.pathname);
   const [firstExecuted, setFirstExecuted] = useState(true);
+  const [algorithmTitle, setAlgorithmTitle] = useState(nowAlgObj.title);
+  const [algorithmDesc, setAlgorithmDesc] = useState(nowAlgObj.description);
 
   const contentWrapperClasses = "content-wrapper " +
     ((algorithms.isShowingAlgorithm(location.pathname)) ?
       "content-init-enter" : "content-init-exit");
+
+  function showNewAlgorithm(){
+    nowAlgObj = algorithms.getAlgorithm(location.pathname);
+    setAlgorithmTitle(nowAlgObj.title);
+    setAlgorithmDesc(nowAlgObj.description);
+    setInProps(true);
+  }
 
   useEffect(() => {
     if (firstExecuted){
@@ -30,10 +41,10 @@ function Content() {
     setInProps(false);
     if(algorithms.isShowingAlgorithm(location.pathname)){
       if (algorithms.isShowingAlgorithm(pvPathname)) {
-        setTimeout(()=>{ setInProps(true);}, 400);
+        setTimeout(()=>{ showNewAlgorithm() }, 400);
       }
       else{
-        setInProps(true);
+        showNewAlgorithm();
       }
     }
 
@@ -47,8 +58,8 @@ function Content() {
 
     <div className={contentWrapperClasses} ref={nodeRef}>
       <div className="content">
-        <Description className="description" title={algorithms.seg.title}
-          description={algorithms.seg.description}/>
+        <Description className="description" title={algorithmTitle}
+          description={algorithmDesc}/>
         <ShowContainer className="show-container"/>
       </div>
     </div>
