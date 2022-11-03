@@ -19,6 +19,7 @@ function Content() {
   const [firstExecuted, setFirstExecuted] = useState(true);
   const [algorithmTitle, setAlgorithmTitle] = useState(nowAlgObj.title);
   const [algorithmDesc, setAlgorithmDesc] = useState(nowAlgObj.description);
+  const [timeoutID, setTimeoutID] = useState(-1);
 
   const contentWrapperClasses = "content-wrapper " +
     ((algorithms.isShowingAlgorithm(location.pathname)) ?
@@ -36,12 +37,17 @@ function Content() {
       setFirstExecuted(false);
       return;
     }
-    let delay = 0;
+
+    if(timeoutID != -1){
+      clearTimeout(timeoutID);
+      setTimeoutID(-1);
+    }
 
     setInProps(false);
     if(algorithms.isShowingAlgorithm(location.pathname)){
       if (algorithms.isShowingAlgorithm(pvPathname)) {
-        setTimeout(()=>{ showNewAlgorithm() }, 400);
+        let id = setTimeout(()=>{ showNewAlgorithm() }, 400);
+        setTimeoutID(id);
       }
       else{
         showNewAlgorithm();
