@@ -19,6 +19,7 @@ function Content() {
   const [firstExecuted, setFirstExecuted] = useState(true);
   const [algorithmTitle, setAlgorithmTitle] = useState(nowAlgObj.title);
   const [algorithmDesc, setAlgorithmDesc] = useState(nowAlgObj.description);
+  const [algorithmCanvas, setAlgorithmCanvas] = useState(nowAlgObj.canvas);
   const [timeoutID, setTimeoutID] = useState(-1);
 
   const contentWrapperClasses = "content-wrapper " +
@@ -29,6 +30,7 @@ function Content() {
     nowAlgObj = algorithms.getAlgorithm(location.pathname);
     setAlgorithmTitle(nowAlgObj.title);
     setAlgorithmDesc(nowAlgObj.description);
+    setAlgorithmCanvas(nowAlgObj.canvas);
     setInProps(true);
   }
 
@@ -66,7 +68,8 @@ function Content() {
       <div className="content">
         <Description className="description" title={algorithmTitle}
           description={algorithmDesc}/>
-        <ShowContainer className="show-container"/>
+        <ShowContainer className="show-container"
+          algorithmCanvas={algorithmCanvas}/>
       </div>
     </div>
 

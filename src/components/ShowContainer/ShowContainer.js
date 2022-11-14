@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ShowContainer.css';
 
-function ShowContainer() {
+function ShowContainer(props) {
 
   const [isShowing, setIsShowing] = useState(true);
 
@@ -29,6 +29,8 @@ function ShowContainer() {
         <rect width="100%" height="100%"   fill="url(#grid)" />
       </svg>
 
+      { props.algorithmCanvas }
+      
       <div className={showHelpClasses}>
         <div>
           사람은 이 만물은 것은 때에, 방황하여도,
