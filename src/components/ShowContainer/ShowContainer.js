@@ -16,21 +16,8 @@ function ShowContainer(props) {
   return (
     <div className="show-container">
 
-      <svg xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="RadialGradient1">
-            <stop offset="0%" stopColor="red"/>
-            <stop offset="100%" stopColor="blue"/>
-          </radialGradient>
-          <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#000" strokeWidth="1"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%"   fill="url(#grid)" />
-      </svg>
-
       { props.algorithmCanvas }
-      
+
       <div className={showHelpClasses}>
         <div>
           사람은 이 만물은 것은 때에, 방황하여도,
