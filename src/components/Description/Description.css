@@ -1,5 +1,6 @@
 .description{
-  display: block;
+  display: flex;
+  flex-direction: column;
   flex: 1;
   min-width: 600px;
 
@@ -21,6 +22,12 @@
   max-width: 696px;
   font-family: 'Noto Sans KR', sans-serif;
   margin-top: 0;
+}
+
+.back-button {
+  margin-top: 48px;
+  width: 60px;
+  height: 60px;
 }
 
 @media screen and (max-width: 768px){
