@@ -1,7 +1,7 @@
 import React from 'react';
 import './Description.css';
 import { Link } from 'react-router-dom'
-import back2 from '../../img/back2.svg';
+import back from '../../img/back.svg';
 
 function Description(props) {
   return (
@@ -12,7 +12,7 @@ function Description(props) {
       })}
       <div style={{ flex: 1 }}></div>
       <Link to="/algorithms" className="text-link">
-        <img src={back2} className="back-button"></img>
+        <img src={back} className="back-button"></img>
       </Link>
     </div>
   );
