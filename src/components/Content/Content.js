@@ -19,6 +19,7 @@ function Content() {
   const [firstExecuted, setFirstExecuted] = useState(true);
   const [algorithmTitle, setAlgorithmTitle] = useState(nowAlgObj.title);
   const [algorithmDesc, setAlgorithmDesc] = useState(nowAlgObj.description);
+  const [algorithmCanvasDesc, setAlgorithmCanvasDesc] = useState(nowAlgObj.canvasDesc);
   const [algorithmCanvas, setAlgorithmCanvas] = useState(nowAlgObj.canvas);
   const [timeoutID, setTimeoutID] = useState(-1);
 
@@ -30,6 +31,7 @@ function Content() {
     nowAlgObj = algorithms.getAlgorithm(location.pathname);
     setAlgorithmTitle(nowAlgObj.title);
     setAlgorithmDesc(nowAlgObj.description);
+    setAlgorithmCanvasDesc(nowAlgObj.canvasDesc);
     setAlgorithmCanvas(nowAlgObj.canvas);
     setInProps(true);
   }
@@ -69,6 +71,7 @@ function Content() {
         <Description className="description" title={algorithmTitle}
           description={algorithmDesc}/>
         <ShowContainer className="show-container"
+          algorithmCanvasDesc={algorithmCanvasDesc}
           algorithmCanvas={algorithmCanvas}/>
       </div>
     </div>
