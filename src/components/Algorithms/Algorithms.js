@@ -1,8 +1,4 @@
 import SegCanvas from '../Canvases/SegCanvas';
-import FakeAhoCanvas from '../Canvases/FakeAhoCanvas';
-import FakeSegtreeCanvas from '../Canvases/FakeSegtreeCanvas';
-import FakeConvexCanvas from '../Canvases/FakeConvexCanvas';
-import FakeStackCanvas from '../Canvases/FakeStackCanvas';
 
 const seg = {
   pathname: "/algorithms/contents/seg",
@@ -14,7 +10,7 @@ const seg = {
   canvasDesc: [
     '청춘의 풀이 이는 귀는 그들의 노년에게서 운다. 인생을 오아이스도 간에 스며들어 때에, 지혜는 것이다. 구할 싸인 싹이 위하여서 어디 무엇이 광야에서 따뜻한 아름다우냐? 있는 청춘의 이상 용감하고 있는가? 천하를 예가 날카로우나 아름답고 인도하겠다는 철환하였는가? 소리다.이것은 것은 싶이 피에 커다란 용기가 밥을 뭇 있다.',
   ],
-  canvas: <FakeSegtreeCanvas/>,
+  canvas: <SegCanvas/>,
 };
 const aho = {
   pathname: "/algorithms/contents/aho",
@@ -26,7 +22,7 @@ const aho = {
   canvasDesc: [
     '청춘의 풀이 이는 귀는 그들의 노년에게서 운다. 인생을 오아이스도 간에 스며들어 때에, 지혜는 것이다. 구할 싸인 싹이 위하여서 어디 무엇이 광야에서 따뜻한 아름다우냐? 있는 청춘의 이상 용감하고 있는가? 천하를 예가 날카로우나 아름답고 인도하겠다는 철환하였는가? 소리다.이것은 것은 싶이 피에 커다란 용기가 밥을 뭇 있다.',
   ],
-  canvas: <FakeAhoCanvas/>,
+  canvas: <SegCanvas/>,
 };
 const convex = {
   pathname: "/algorithms/contents/convex",
@@ -38,7 +34,7 @@ const convex = {
   canvasDesc: [
     '청춘의 풀이 이는 귀는 그들의 노년에게서 운다. 인생을 오아이스도 간에 스며들어 때에, 지혜는 것이다. 구할 싸인 싹이 위하여서 어디 무엇이 광야에서 따뜻한 아름다우냐? 있는 청춘의 이상 용감하고 있는가? 천하를 예가 날카로우나 아름답고 인도하겠다는 철환하였는가? 소리다.이것은 것은 싶이 피에 커다란 용기가 밥을 뭇 있다.',
   ],
-  canvas: <FakeConvexCanvas/>,
+  canvas: <SegCanvas/>,
 };
 const stack = {
   pathname: "/algorithms/contents/stack",
@@ -50,7 +46,7 @@ const stack = {
   canvasDesc: [
     '청춘의 풀이 이는 귀는 그들의 노년에게서 운다. 인생을 오아이스도 간에 스며들어 때에, 지혜는 것이다. 구할 싸인 싹이 위하여서 어디 무엇이 광야에서 따뜻한 아름다우냐? 있는 청춘의 이상 용감하고 있는가? 천하를 예가 날카로우나 아름답고 인도하겠다는 철환하였는가? 소리다.이것은 것은 싶이 피에 커다란 용기가 밥을 뭇 있다.',
   ],
-  canvas: <FakeStackCanvas/>,
+  canvas: <SegCanvas/>,
 };
 const notFound = {
   pathname: "/algorithms/contents/",
