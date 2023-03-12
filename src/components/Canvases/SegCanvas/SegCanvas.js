@@ -15,6 +15,9 @@ function SegCanvas() {
   function renderFrame() {
     const ctx = canvasRef.current.getContext("2d");
     const values = valuesRef.current;
+    const canvasW = canvasRef.current.offsetWidth * 2;
+    const canvasH = canvasRef.current.offsetHeight * 2;
+
     if (values.x == 100) {
       values.x = 10;
       values.y = 10;
@@ -22,7 +25,7 @@ function SegCanvas() {
     values.x += 1;
     values.y += 1;
 
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctx.clearRect(0, 0, canvasW, canvasH);
     ctx.save();
     ctx.beginPath();
     ctx.arc(values.x, values.y, 10, 0, Math.PI * 2);
