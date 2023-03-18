@@ -3,7 +3,12 @@ import './SegCanvas.css';
 
 function SegCanvas() {
   const canvasRef = useRef(null); // 캔버스 접근을 위한 useRef
-  const valuesRef = useRef({ x: 10, y: 10 }); // 캔버스에 그릴 object의 속성값을 저장
+  const valuesRef = useRef([-1,
+    1,
+    2, 3,
+    0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0]); // 각 노드에 저장된 값 저장
   const requestIdRef = useRef(null); // 애니메이션 request id를 저장
 
   // canvas의 너비, 높이 저장을 위한 state
@@ -11,19 +16,42 @@ function SegCanvas() {
   const [canvasWidth, setCanvasWidth] = useState(0);
   const [canvasHeight, setCanvasHeight] = useState(0);
 
+  const squares = [{},
+    {x: 0, y: 0, width: 1.0, height: 0.25},
+
+    {x: 0, y: 0.25, width: 0.5, height: 0.25},
+    {x: 0.5, y: 0.25, width: 0.5, height: 0.25},
+
+    {x: 0, y: 0.5, width: 0.25, height: 0.25},
+    {x: 0.25, y: 0.5, width: 0.25, height: 0.25},
+    {x: 0.5, y: 0.5, width: 0.25, height: 0.25},
+    {x: 0.75, y: 0.5, width: 0.25, height: 0.25},
+
+    {x: 0, y: 0.75, width: 0.125, height: 0.125},
+    {x: 0.125, y: 0.75, width: 0.125, height: 0.125},
+    {x: 0.25, y: 0.75, width: 0.125, height: 0.125},
+    {x: 0.375, y: 0.75, width: 0.125, height: 0.125},
+    {x: 0.5, y: 0.75, width: 0.125, height: 0.125},
+    {x: 0.625, y: 0.75, width: 0.125, height: 0.125},
+    {x: 0.75, y: 0.75, width: 0.125, height: 0.125},
+    {x: 0.875, y: 0.75, width: 0.125, height: 0.125},
+
+    {x: 0, y: 0.875, width: 0.125, height: 0.125},
+    {x: 0.125, y: 0.875, width: 0.125, height: 0.125},
+    {x: 0.25, y: 0.875, width: 0.125, height: 0.125},
+    {x: 0.375, y: 0.875, width: 0.125, height: 0.125},
+    {x: 0.5, y: 0.875, width: 0.125, height: 0.125},
+    {x: 0.625, y: 0.875, width: 0.125, height: 0.125},
+    {x: 0.75, y: 0.875, width: 0.125, height: 0.125},
+    {x: 0.875, y: 0.875, width: 0.125, height: 0.125}
+  ];
+
   // 1 frame을 위한 렌더링
   function renderFrame() {
     const ctx = canvasRef.current.getContext("2d");
     const values = valuesRef.current;
     const canvasW = canvasRef.current.offsetWidth * 2;
     const canvasH = canvasRef.current.offsetHeight * 2;
-
-    if (values.x == 100) {
-      values.x = 10;
-      values.y = 10;
-    }
-    values.x += 1;
-    values.y += 1;
 
     ctx.clearRect(0, 0, canvasW, canvasH);
     ctx.save();
@@ -33,6 +61,24 @@ function SegCanvas() {
     ctx.fill();
     ctx.closePath();
     ctx.restore();
+
+    // 사각형 23개 그리기
+    ctx.lineWidth = 2;
+    for(var i=1; i<=23; i++){
+        ctx.strokeRect(squares[i].x * canvasW, squares[i].y * canvasH,
+            squares[i].width * canvasW, squares[i].height * canvasH);
+    }
+
+    // 사각형 내부에 숫자 그리기
+    ctx.font = "96px Orbitron";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    for(var i=1; i<=23; i++){
+        if(i<=15) ctx.fillStyle = "#444";
+        else ctx.fillStyle = "#446787";
+        ctx.fillText(values[i], squares[i].x * canvasW + squares[i].width * canvasW / 2,
+            squares[i].y * canvasH + squares[i].height * canvasH / 2);
+    }
   }
 
   // animation 1 frame을 그릴 때 호출
