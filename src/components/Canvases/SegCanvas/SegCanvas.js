@@ -45,6 +45,9 @@ function SegCanvas() {
     {x: 0.75, y: 0.875, width: 0.125, height: 0.125},
     {x: 0.875, y: 0.875, width: 0.125, height: 0.125}
   ];
+  const fontSize = 0.07;
+  // orbitron 폰트가 살짝 올라가 있어, y좌표 조금 내리기 위함
+  const adjustFontY = 0.004;
 
   // 1 frame을 위한 렌더링
   function renderFrame() {
@@ -53,14 +56,8 @@ function SegCanvas() {
     const canvasW = canvasRef.current.offsetWidth * 2;
     const canvasH = canvasRef.current.offsetHeight * 2;
 
+    // 캔버스 클리어
     ctx.clearRect(0, 0, canvasW, canvasH);
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(values.x, values.y, 10, 0, Math.PI * 2);
-    ctx.fillStyle = "#444";
-    ctx.fill();
-    ctx.closePath();
-    ctx.restore();
 
     // 사각형 23개 그리기
     ctx.lineWidth = 2;
@@ -70,14 +67,14 @@ function SegCanvas() {
     }
 
     // 사각형 내부에 숫자 그리기
-    ctx.font = "96px Orbitron";
+    ctx.font = (canvasW * fontSize) + "px Orbitron";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     for(var i=1; i<=23; i++){
-        if(i<=15) ctx.fillStyle = "#444";
+        if(i<=15) ctx.fillStyle = "#000";
         else ctx.fillStyle = "#446787";
         ctx.fillText(values[i], squares[i].x * canvasW + squares[i].width * canvasW / 2,
-            squares[i].y * canvasH + squares[i].height * canvasH / 2);
+            squares[i].y * canvasH + squares[i].height * canvasH / 2 + (adjustFontY * canvasH));
     }
   }
 
