@@ -10,7 +10,7 @@ function SegCanvas() {
     0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0]); // 각 노드에 저장된 값 저장
   const requestIdRef = useRef(null); // 애니메이션 request id를 저장
-  const MAXV = 99; // 저장할 수 있는 최대값
+  const maxV = 99; // 저장할 수 있는 최대값
 
   // canvas의 너비, 높이 저장을 위한 state
   // canvas 요소 실제 크기의 2배로 설정
@@ -46,6 +46,11 @@ function SegCanvas() {
     {x: 0.75, y: 0.875, width: 0.125, height: 0.125},
     {x: 0.875, y: 0.875, width: 0.125, height: 0.125}
   ];
+  const activatedRef = useRef([-1,
+      -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+      -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+      -1, -1, -1]); // square이 활성화 된 시간의 timestamp
+  const animTime = 300; // 애니메이션 효과 지속시간 (ms 단위)
   const fontSize = 0.07;
   // orbitron 폰트가 살짝 올라가 있어, y좌표 조금 내리기 위함
   const adjustFontY = 0.004;
@@ -54,11 +59,29 @@ function SegCanvas() {
   function renderFrame() {
     const ctx = canvasRef.current.getContext("2d");
     const values = valuesRef.current;
+    const activated = activatedRef.current;
     const canvasW = canvasRef.current.offsetWidth * 2;
     const canvasH = canvasRef.current.offsetHeight * 2;
+    const nowTime = new Date().getTime();
 
     // 캔버스 클리어
     ctx.clearRect(0, 0, canvasW, canvasH);
+
+    // 사각형 배경 23개 그리기
+    for(var i=1; i<=23; i++){
+      if(activated[i] == -1) continue;
+
+      const timeGap = (nowTime - activated[i]);
+      if(timeGap > animTime) continue;
+
+      const alpha = (1.0 - timeGap / animTime);
+
+      if(i <= 15) ctx.fillStyle = "rgba(0,0,0," + alpha + ")"; // 검은색
+      else ctx.fillStyle = "rgba(255,255,255," + alpha + ")"; // 흰색
+
+      ctx.fillRect(squares[i].x * canvasW, squares[i].y * canvasH,
+        squares[i].width * canvasW, squares[i].height * canvasH);
+    }
 
     // 사각형 23개 그리기
     ctx.lineWidth = 2;
@@ -72,7 +95,11 @@ function SegCanvas() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     for(var i=1; i<=23; i++){
-        if(i<=15) ctx.fillStyle = "#000";
+        if(i<=15) {
+            const timeGap = (nowTime - activated[i]);
+            const alpha = Math.min(1.0, 1.0 - timeGap / animTime);
+            ctx.fillStyle = "rgba(" + 255*alpha + "," + 255*alpha + "," + 255*alpha + ")";
+        }
         else ctx.fillStyle = "#446787";
         ctx.fillText(values[i], squares[i].x * canvasW + squares[i].width * canvasW / 2,
             squares[i].y * canvasH + squares[i].height * canvasH / 2 + (adjustFontY * canvasH));
@@ -116,14 +143,19 @@ function SegCanvas() {
 
   // idx에 해당하는 위치에 +val
   function segUpdate(idx, val) {
-    var values = valuesRef.current;
+    const activated = activatedRef.current;
+    const values = valuesRef.current;
+    const nowTime = new Date().getTime();
 
-    values[idx] = Math.min(values[idx] + 1, MAXV);
+    values[idx] = Math.min(values[idx] + 1, maxV);
+    activated[idx] = nowTime;
     values[idx-8] = values[idx];
+    activated[idx-8] = nowTime;
     idx -= 8;
     
     while(idx > 1) {
       values[idx >> 1] = values[idx] + values[idx ^ 1];
+      activated[idx >> 1] = nowTime;
       idx >>= 1;
     }
   }
