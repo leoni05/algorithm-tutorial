@@ -10,6 +10,7 @@ function SegCanvas() {
     0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0]); // 각 노드에 저장된 값 저장
   const requestIdRef = useRef(null); // 애니메이션 request id를 저장
+  const MAXV = 99; // 저장할 수 있는 최대값
 
   // canvas의 너비, 높이 저장을 위한 state
   // canvas 요소 실제 크기의 2배로 설정
@@ -113,9 +114,46 @@ function SegCanvas() {
     };
   }, []);
 
+  // idx에 해당하는 위치에 +val
+  function segUpdate(idx, val) {
+    var values = valuesRef.current;
+
+    values[idx] = Math.min(values[idx] + 1, MAXV);
+    values[idx-8] = values[idx];
+    idx -= 8;
+    
+    while(idx > 1) {
+      values[idx >> 1] = values[idx] + values[idx ^ 1];
+      idx >>= 1;
+    }
+  }
+
+  // x,y 좌표가 square에 포함되는가
+    function inSquare(square, x, y) {
+      return square.x <= x && x <= square.x + square.width
+        && square.y <= y && y <= square.y + square.height;
+    }
+
+  // canvas 기준 click 된 좌표를 0~1 사이 값으로 계산
+  function handleCanvasClick(event) {
+    const rect = canvasRef.current.getBoundingClientRect();
+    var x = event.clientX - rect.left;
+    var y = event.clientY - rect.top;
+    x /= canvasRef.current.offsetWidth;
+    y /= canvasRef.current.offsetHeight;
+
+    // x, y 좌표에 해당하는 사각형을 찾고 +1
+    for(var i=16; i<=23; i++){
+      if(inSquare(squares[i], x, y)){
+        segUpdate(i, 1);
+        return;
+      }
+    }
+  }
+
   return (
     <canvas className="show-canvas" ref={canvasRef}
-      width={canvasWidth} height={canvasHeight}/>
+      width={canvasWidth} height={canvasHeight} onClick={handleCanvasClick}/>
   );
 }
 
