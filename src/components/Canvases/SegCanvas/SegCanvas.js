@@ -4,8 +4,8 @@ import './SegCanvas.css';
 function SegCanvas() {
   const canvasRef = useRef(null); // 캔버스 접근을 위한 useRef
   const valuesRef = useRef([-1,
-    1,
-    2, 3,
+    0,
+    0, 0,
     0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0]); // 각 노드에 저장된 값 저장
