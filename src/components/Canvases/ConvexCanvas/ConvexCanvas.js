@@ -4,6 +4,8 @@ import './ConvexCanvas.css';
 function ConvexCanvas() {
   const canvasRef = useRef(null); // 캔버스 접근을 위한 useRef
   const pointsRef = useRef([]); // 선택한 점들을 저장
+  const sortedRef = useRef([]); // 정렬한 점들을 저장
+  const hullRef = useRef([]); // 컨벡스 헐
   const requestIdRef = useRef(null); // 애니메이션 request id를 저장
 
   // canvas의 너비, 높이 저장을 위한 state
@@ -12,9 +14,9 @@ function ConvexCanvas() {
   const [canvasHeight, setCanvasHeight] = useState(0);
 
   const animTime = 300; // 애니메이션 효과 지속시간 (ms 단위)
-  const fontSize = 0.07;
+  const fontSize = 0.03;
   // orbitron 폰트가 살짝 올라가 있어, y좌표 조금 내리기 위함
-  const adjustFontY = 0.004;
+  const adjustFontY = 0.0017;
 
   const spaceNum = 16; // 가로 세로 칸의 개수
 
@@ -25,11 +27,13 @@ function ConvexCanvas() {
     const canvasH = canvasRef.current.offsetHeight * 2;
     const nowTime = new Date().getTime();
     const points = pointsRef.current;
+    const sorted = sortedRef.current;
 
     // 캔버스 클리어
     ctx.clearRect(0, 0, canvasW, canvasH);
 
     ctx.lineWidth = 2;
+    ctx.fillStyle = "#000";
     // 가로 눈금 그리기
     for(var i=1; i<=spaceNum-1; i++){
       const nowY = canvasH * i / spaceNum;
@@ -52,6 +56,16 @@ function ConvexCanvas() {
     for(var i=0; i<points.length; i++){
       ctx.fillRect(points[i].x * canvasW, points[i].y * canvasH,
         canvasW / spaceNum, canvasH / spaceNum);
+    }
+
+    // 각정렬 순서대로 숫자 그려보기
+    ctx.font = (canvasW * fontSize) + "px Orbitron";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#fff";
+    for(var i=0; i<sorted.length; i++){
+      ctx.fillText(i, sorted[i].x * canvasW + canvasW / 32,
+        sorted[i].y * canvasH + canvasH / 32 + (adjustFontY * canvasH));
     }
   }
 
@@ -91,11 +105,80 @@ function ConvexCanvas() {
     };
   }, []);
 
+  // 점 비교 함수
+  function pointCompare(p1, p2) {
+    if(p1.y < p2.y) return -1;
+    if(p1.y > p2.y) return 1;
+    if(p1.x < p2.x) return -1;
+    if(p1.x > p2.x) return 1;
+    return 0;
+  }
+  // 점 minus 연산 함수
+  function pointMinus(p1, p2) {
+    return {x: p1.x - p2.x, y: p1.y - p2.y};
+  }
+  // 점 내적 함수
+  function pointCross(p1, p2) {
+    return p1.x * p2.y - p2.x * p1.y;
+  }
+  // 점 3개 내적 함수
+  function pointCross3(p, p1, p2) {
+    return pointCross(pointMinus(p1, p), pointMinus(p2, p));
+  }
+
+  // 배열에서 원소 값 swap
+  function arrSwap(arr, idx1, idx2) {
+    var tmp = arr[idx1];
+    arr[idx1] = arr[idx2];
+    arr[idx2] = tmp;
+  }
+
+  // 각정렬
+  function sortByAngle() {
+    var points = pointsRef.current;
+    var sorted = sortedRef.current;
+    var tmp;
+    var std = 0;
+
+    // tmp에 복사 후 y좌표 -1 곱하기
+    tmp = points.slice();
+    for(var i=0; i<tmp.length; i++){
+      tmp[i].y *= -1;
+    }
+
+    // 기준점 찾기
+    for(var i=0; i<tmp.length; i++){
+      if(pointCompare(tmp[i], tmp[std]) < 0){
+        std = i;
+      }
+    }
+    sorted[0] = tmp[std];
+    sorted.splice(1, sorted.length-1);
+    tmp.splice(std, 1);
+
+    // 기준점으로 각정렬하기
+    tmp.sort(function(p1, p2) {
+      const crossRes = pointCross3(sorted[0], p1, p2);
+      if(parseFloat(crossRes.toFixed(6)) != 0.0) {
+        if(crossRes > 0) return -1;
+        else return 1;
+      }
+      return pointCompare(p1, p2);
+    });
+
+    // sorted에 결과값 저장하기
+    sorted[0].y *= -1;
+    for(var i=0; i<tmp.length; i++){
+      tmp[i].y *= -1;
+      sorted.push(tmp[i]);
+    }
+  }
+
   // canvas 기준 click 된 좌표를 0~1 사이 값으로 계산
   function handleCanvasClick(event) {
     const points = pointsRef.current;
     // 점의 개수 최대 10개
-    if(points.length >= 10) return;
+    if(points.length >= 10) { sortByAngle(); return; }
 
     const rect = canvasRef.current.getBoundingClientRect();
     var x = event.clientX - rect.left;
@@ -106,6 +189,13 @@ function ConvexCanvas() {
     // 점의 좌표를 0~1 사이 값으로 저장
     var pointX = parseInt(x / (1/spaceNum)) * (1/spaceNum);
     var pointY = parseInt(y / (1/spaceNum)) * (1/spaceNum);
+
+    // 이미 존재하면 패스
+    for(var i=0; i<points.length; i++){
+      if(points[i].x == pointX && points[i].y == pointY){
+        return;
+      }
+    }
     points.push({x: pointX, y:pointY});
   }
 
