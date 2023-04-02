@@ -136,6 +136,7 @@ function SegCanvas() {
   useEffect(() => {
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
+    canvasRef.current.onselectstart = function () { return false; }
     return () => {
       window.removeEventListener('resize', setCanvasSize);
     };
