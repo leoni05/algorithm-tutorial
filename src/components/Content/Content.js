@@ -71,6 +71,7 @@ function Content() {
         <Description className="description" title={algorithmTitle}
           description={algorithmDesc}/>
         <ShowContainer className="show-container"
+          title={algorithmTitle}
           algorithmCanvasDesc={algorithmCanvasDesc}
           algorithmCanvas={algorithmCanvas}/>
       </div>

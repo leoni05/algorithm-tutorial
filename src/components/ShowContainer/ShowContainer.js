@@ -9,6 +9,11 @@ function ShowContainer(props) {
     setIsShowing(false);
   }
 
+  // 다른 알고리즘 페이지로 이동 시 show-help 다시 살리기
+  useEffect(() => {
+    setIsShowing(true);
+    }, [props.title]);
+
   const showHelpClasses = "show-help" +
     ((isShowing) ? "" :
       " display-none");
