@@ -24,6 +24,7 @@ function ConvexCanvas() {
     const canvasW = canvasRef.current.offsetWidth * 2;
     const canvasH = canvasRef.current.offsetHeight * 2;
     const nowTime = new Date().getTime();
+    const points = pointsRef.current;
 
     // 캔버스 클리어
     ctx.clearRect(0, 0, canvasW, canvasH);
@@ -45,6 +46,12 @@ function ConvexCanvas() {
       ctx.moveTo(nowX, 0);
       ctx.lineTo(nowX, canvasH);
       ctx.stroke();
+    }
+
+    // 선택된 점들 그리기
+    for(var i=0; i<points.length; i++){
+      ctx.fillRect(points[i].x * canvasW, points[i].y * canvasH,
+        canvasW / spaceNum, canvasH / spaceNum);
     }
   }
 
@@ -86,12 +93,20 @@ function ConvexCanvas() {
 
   // canvas 기준 click 된 좌표를 0~1 사이 값으로 계산
   function handleCanvasClick(event) {
+    const points = pointsRef.current;
+    // 점의 개수 최대 10개
+    if(points.length >= 10) return;
+
     const rect = canvasRef.current.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
     x /= canvasRef.current.offsetWidth;
     y /= canvasRef.current.offsetHeight;
 
+    // 점의 좌표를 0~1 사이 값으로 저장
+    var pointX = parseInt(x / (1/spaceNum)) * (1/spaceNum);
+    var pointY = parseInt(y / (1/spaceNum)) * (1/spaceNum);
+    points.push({x: pointX, y:pointY});
   }
 
   return (
