@@ -16,6 +16,8 @@ function ConvexCanvas() {
   // orbitron 폰트가 살짝 올라가 있어, y좌표 조금 내리기 위함
   const adjustFontY = 0.004;
 
+  const spaceNum = 16; // 가로 세로 칸의 개수
+
   // 1 frame을 위한 렌더링
   function renderFrame() {
     const ctx = canvasRef.current.getContext("2d");
@@ -26,6 +28,24 @@ function ConvexCanvas() {
     // 캔버스 클리어
     ctx.clearRect(0, 0, canvasW, canvasH);
 
+    ctx.lineWidth = 2;
+    // 가로 눈금 그리기
+    for(var i=1; i<=spaceNum-1; i++){
+      const nowY = canvasH * i / spaceNum;
+      ctx.beginPath();
+      ctx.moveTo(0, nowY);
+      ctx.lineTo(canvasW, nowY);
+      ctx.stroke();
+    }
+
+    // 세로 눈금 그리기
+    for(var i=1; i<=spaceNum-1; i++){
+      const nowX = canvasW * i / spaceNum;
+      ctx.beginPath();
+      ctx.moveTo(nowX, 0);
+      ctx.lineTo(nowX, canvasH);
+      ctx.stroke();
+    }
   }
 
   // animation 1 frame을 그릴 때 호출
