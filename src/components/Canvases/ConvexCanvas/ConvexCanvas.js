@@ -62,6 +62,20 @@ function ConvexCanvas() {
         canvasW / spaceNum, canvasH / spaceNum);
     }
 
+    // hull 그리기
+    if(hull.length > 1){
+      var x, y;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo((hull[0].x + 1/(spaceNum*2)) * canvasW, (hull[0].y + 1/(spaceNum*2)) * canvasH);
+      console.log((hull[0].x + 1/(spaceNum*2)) * canvasW, (hull[0].y + 1/(spaceNum*2)) * canvasH);
+      for(var i=1; i<hull.length; i++){
+        ctx.lineTo((hull[i].x + 1/(spaceNum*2)) * canvasW, (hull[i].y + 1/(spaceNum*2)) * canvasH);
+      }
+      ctx.lineTo((hull[0].x + 1/(spaceNum*2)) * canvasW, (hull[0].y + 1/(spaceNum*2)) * canvasH);
+      ctx.stroke();
+    }
+
     // 각정렬 순서대로 숫자 그리기
     ctx.font = (canvasW * fontSize) + "px Orbitron";
     ctx.textAlign = "center";
