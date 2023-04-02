@@ -19,7 +19,8 @@ function ConvexCanvas() {
   const adjustFontY = 0.0017;
 
   const spaceNum = 16; // 가로 세로 칸의 개수
-  const inputFinishTimeRef = useRef(-1);
+  const inputFinishTimeRef = useRef(-1); // 10번째 점 입력한 timestamp
+  const nextUpdateIdxRef = useRef(0); // 다음으로 hull에 업데이트할 idx
   const animGap = 1000;
 
   // 1 frame을 위한 렌더링
@@ -30,6 +31,7 @@ function ConvexCanvas() {
     const nowTime = new Date().getTime();
     const points = pointsRef.current;
     const sorted = sortedRef.current;
+    const hull = hullRef.current;
 
     // 캔버스 클리어
     ctx.clearRect(0, 0, canvasW, canvasH);
@@ -76,6 +78,13 @@ function ConvexCanvas() {
       for(var i=0; i<=displayNum; i++){
         ctx.fillText(i, sorted[i].x * canvasW + canvasW / 32,
           sorted[i].y * canvasH + canvasH / 32 + (adjustFontY * canvasH));
+      }
+
+      // hull에 업데이트 해야하는 점이 있다면 업데이트
+      while(nextUpdateIdxRef.current <= displayNum){
+        updateHull(nextUpdateIdxRef.current);
+        nextUpdateIdxRef.current = nextUpdateIdxRef.current + 1;
+        console.log(hull)
       }
     }
   }
@@ -183,6 +192,27 @@ function ConvexCanvas() {
       tmp[i].y *= -1;
       sorted.push(tmp[i]);
     }
+  }
+
+  // hull에 sorted[idx] 점 업데이트
+  function updateHull(idx) {
+    var hull = hullRef.current;
+    const sorted = sortedRef.current;
+
+    while(hull.length >= 2) {
+      var last1 = hull[hull.length - 1];
+      var last2 = hull[hull.length - 2];
+      var crossRes;
+
+      // 내적 값을 구하기 전 y좌표에 -1 곱하기
+      last1.y *= -1; last2.y *=-1; sorted[idx].y *= -1;
+      crossRes = pointCross3(last2, last1, sorted[idx]);
+      last1.y *= -1; last2.y *=-1; sorted[idx].y *= -1;
+
+      if(crossRes > 0.0) break;
+      hull.pop();
+    }
+    hull.push(sorted[idx]);
   }
 
   // canvas 기준 click 된 좌표를 0~1 사이 값으로 계산
