@@ -19,7 +19,7 @@ function ConvexCanvas() {
   const adjustFontY = 0.0017;
 
   const spaceNum = 16; // 가로 세로 칸의 개수
-  const inputFinishTimeRef = useRef([-1]);
+  const inputFinishTimeRef = useRef(-1);
   const animGap = 1000;
 
   // 1 frame을 위한 렌더링
@@ -66,12 +66,11 @@ function ConvexCanvas() {
     ctx.textBaseline = "middle";
     ctx.fillStyle = "#fff";
     if(points.length >= 10){
-      var inputFinishTime = inputFinishTimeRef.current;
       const nowTime = new Date().getTime();
-      if(inputFinishTime[0] == -1){
-        inputFinishTime[0] = nowTime;
+      if(inputFinishTimeRef.current == -1){
+        inputFinishTimeRef.current = nowTime;
       }
-      const timeGap = nowTime - inputFinishTime[0];
+      const timeGap = nowTime - inputFinishTimeRef.current;
       const displayNum = Math.min(9, timeGap / animGap);
 
       for(var i=0; i<=displayNum; i++){
