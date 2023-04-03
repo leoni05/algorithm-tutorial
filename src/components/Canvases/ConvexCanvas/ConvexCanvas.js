@@ -104,7 +104,6 @@ function ConvexCanvas() {
       while(nextUpdateIdxRef.current <= displayNum){
         updateHull(nextUpdateIdxRef.current);
         nextUpdateIdxRef.current = nextUpdateIdxRef.current + 1;
-        console.log(hull)
       }
     }
   }
