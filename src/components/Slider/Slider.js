@@ -31,8 +31,8 @@ function Slider() {
               <span className="slide-item">Aho-Corasick</span>
               <span className="slide-item">DFS</span>
               <span className="slide-item">BFS</span>
-              <Link to="/algorithms/contents/convex" className="text-link">
-                <span className="slide-item">Convex Hull</span>
+              <Link to="/algorithms/contents/graham" className="text-link">
+                <span className="slide-item">Graham Scan</span>
               </Link>
               <Link to="/algorithms/contents/stack" className="text-link">
                 <span className="slide-item">Stack</span>
@@ -47,7 +47,7 @@ function Slider() {
                 <span className="slide-item">DFS</span>
               </Link>
               <span className="slide-item">BFS</span>
-              <span className="slide-item">Convex Hull</span>
+              <span className="slide-item">Graham Scan</span>
               <span className="slide-item">Stack</span>
             </div>
           </div>

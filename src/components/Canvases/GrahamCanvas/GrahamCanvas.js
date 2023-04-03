@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './ConvexCanvas.css';
+import './GrahamCanvas.css';
 
-function ConvexCanvas() {
+function GrahamCanvas() {
   const canvasRef = useRef(null); // 캔버스 접근을 위한 useRef
   const pointsRef = useRef([]); // 선택한 점들을 저장
   const sortedRef = useRef([]); // 정렬한 점들을 저장
@@ -268,4 +268,4 @@ function ConvexCanvas() {
   );
 }
 
-export default ConvexCanvas;
+export default GrahamCanvas;
