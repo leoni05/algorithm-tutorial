@@ -58,21 +58,26 @@ function ConvexCanvas() {
 
     // 선택된 점들 그리기
     for(var i=0; i<points.length; i++){
-      ctx.fillRect(points[i].x * canvasW, points[i].y * canvasH,
-        canvasW / spaceNum, canvasH / spaceNum);
+      var px = points[i].x * canvasW / spaceNum;
+      var py = points[i].y * canvasH / spaceNum;
+      ctx.fillRect(px, py, canvasW / spaceNum, canvasH / spaceNum);
     }
 
     // hull 그리기
     if(hull.length > 1){
-      var x, y;
+      var px = (hull[0].x/spaceNum + 1/(spaceNum*2)) * canvasW;
+      var py = (hull[0].y/spaceNum + 1/(spaceNum*2)) * canvasH;
       ctx.lineWidth = 4;
       ctx.beginPath();
-      ctx.moveTo((hull[0].x + 1/(spaceNum*2)) * canvasW, (hull[0].y + 1/(spaceNum*2)) * canvasH);
-      console.log((hull[0].x + 1/(spaceNum*2)) * canvasW, (hull[0].y + 1/(spaceNum*2)) * canvasH);
+      ctx.moveTo(px, py);
+
       for(var i=1; i<hull.length; i++){
-        ctx.lineTo((hull[i].x + 1/(spaceNum*2)) * canvasW, (hull[i].y + 1/(spaceNum*2)) * canvasH);
+        var nx = (hull[i].x/spaceNum + 1/(spaceNum*2)) * canvasW;
+        var ny = (hull[i].y/spaceNum + 1/(spaceNum*2)) * canvasH;
+        ctx.lineTo(nx, ny);
       }
-      ctx.lineTo((hull[0].x + 1/(spaceNum*2)) * canvasW, (hull[0].y + 1/(spaceNum*2)) * canvasH);
+
+      ctx.lineTo(px, py);
       ctx.stroke();
     }
 
@@ -90,8 +95,9 @@ function ConvexCanvas() {
       const displayNum = Math.min(9, timeGap / animGap);
 
       for(var i=0; i<=displayNum; i++){
-        ctx.fillText(i, sorted[i].x * canvasW + canvasW / 32,
-          sorted[i].y * canvasH + canvasH / 32 + (adjustFontY * canvasH));
+        var px = sorted[i].x/spaceNum * canvasW + canvasW / 32;
+        var py = sorted[i].y/spaceNum * canvasH + canvasH / 32;
+        ctx.fillText(i, px, py + (adjustFontY * canvasH));
       }
 
       // hull에 업데이트 해야하는 점이 있다면 업데이트
@@ -193,7 +199,7 @@ function ConvexCanvas() {
     // 기준점으로 각정렬하기
     tmp.sort(function(p1, p2) {
       const crossRes = pointCross3(sorted[0], p1, p2);
-      if(parseFloat(crossRes.toFixed(10)) != 0.0) {
+      if(crossRes != 0) {
         if(crossRes > 0) return -1;
         else return 1;
       }
@@ -223,7 +229,7 @@ function ConvexCanvas() {
       crossRes = pointCross3(last2, last1, sorted[idx]);
       last1.y *= -1; last2.y *=-1; sorted[idx].y *= -1;
 
-      if(crossRes > 0.0) break;
+      if(crossRes > 0) break;
       hull.pop();
     }
     hull.push(sorted[idx]);
@@ -241,9 +247,9 @@ function ConvexCanvas() {
     x /= canvasRef.current.offsetWidth;
     y /= canvasRef.current.offsetHeight;
 
-    // 점의 좌표를 0~1 사이 값으로 저장
-    var pointX = parseInt(x / (1/spaceNum)) * (1/spaceNum);
-    var pointY = parseInt(y / (1/spaceNum)) * (1/spaceNum);
+    // 점의 좌표를 정수형으로 저장
+    var pointX = parseInt(x / (1/spaceNum) + 0.01);
+    var pointY = parseInt(y / (1/spaceNum) + 0.01);
 
     // 이미 존재하면 패스
     for(var i=0; i<points.length; i++){
