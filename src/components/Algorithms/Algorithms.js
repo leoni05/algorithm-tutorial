@@ -1,6 +1,7 @@
 import SegCanvas from '../Canvases/SegCanvas';
 import GrahamCanvas from '../Canvases/GrahamCanvas';
 import DfsCanvas from '../Canvases/DfsCanvas';
+import StackCanvas from '../Canvases/StackCanvas';
 
 const seg = {
   pathname: "/algorithms/contents/seg",
@@ -62,7 +63,7 @@ const stack = {
   canvasDesc: [
     '청춘의 풀이 이는 귀는 그들의 노년에게서 운다. 인생을 오아이스도 간에 스며들어 때에, 지혜는 것이다. 구할 싸인 싹이 위하여서 어디 무엇이 광야에서 따뜻한 아름다우냐? 있는 청춘의 이상 용감하고 있는가? 천하를 예가 날카로우나 아름답고 인도하겠다는 철환하였는가? 소리다.이것은 것은 싶이 피에 커다란 용기가 밥을 뭇 있다.',
   ],
-  canvas: <SegCanvas/>,
+  canvas: <StackCanvas/>,
 };
 const notFound = {
   pathname: "/algorithms/contents/",
