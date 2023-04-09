@@ -40,7 +40,11 @@ function StackCanvas() {
   const dropping = 1; // 물체가 떨어지고 있는 중
   const popping = 2; // 스택에서 물체 빼고 있는 중
   const stateRef = useRef(0); // 애니메이션 상태
-
+  const g = 0.001; // 중력 가속도
+  const dropObjRef = useRef({ objNum: -1, y: -0.5, speed: 0, bounced: false, }); // 떨어지고 있는 물체
+  const popObjRef = useRef({ objNum: -1, popBeginTime: -1 }); // pop되고 있는 물체
+  const usedRef = useRef([ false,false,false,false,false ]); // 각 물체가 사용되었는지(dropping, staked, popping)
+  const stackRef = useRef([{ objNum: -1, height: 1 }]); // 실제 스택 (height : 현재 물체의 y좌표)
 
   // 1 frame을 위한 렌더링
   function renderFrame() {
@@ -48,6 +52,7 @@ function StackCanvas() {
     const canvasW = canvasRef.current.offsetWidth * 2;
     const canvasH = canvasRef.current.offsetHeight * 2;
     const nowTime = new Date().getTime();
+    const stack = stackRef.current;
 
     // 캔버스 클리어
     ctx.clearRect(0, 0, canvasW, canvasH);
@@ -75,11 +80,27 @@ function StackCanvas() {
     const popY = popBox.y + popBox.height/2 + adjustFontY;
     ctx.fillText("POP", popX * canvasW, popY * canvasH);
 
-    // image 그리기
+    // 대기 중인 image 그리기
     for(var i=0; i<5; i++){
-      ctx.drawImage(images.current[i], imagesPos[i].x * canvasW, imagesPos[i].y * canvasH,
-        imagesPos[i].width * canvasW, imagesPos[i].height * canvasH);
+      if(usedRef.current[i] == false){
+        ctx.drawImage(images.current[i], imagesPos[i].x * canvasW, imagesPos[i].y * canvasH,
+          imagesPos[i].width * canvasW, imagesPos[i].height * canvasH);
+      }
     }
+
+    // 스택에 있는 image 그리기
+    for(var i=1; i<stack.length; i++){
+      const obj = stack[i].objNum;
+      const x = ((3/8) - imagesPos[obj].width)/2;
+      const y = stack[i].height;
+      ctx.drawImage(images.current[obj], x * canvasW, y * canvasH,
+        imagesPos[obj].width * canvasW, imagesPos[obj].height * canvasH);
+    }
+  }
+
+  // 떨어짐 진행시키기
+  function proceedDropping() {
+
   }
 
   // animation 1 frame을 그릴 때 호출
@@ -149,9 +170,14 @@ function StackCanvas() {
     if(inSquare(popBox, x, y)){
        console.log("popbox");
     }
+
     for(var i=0; i<5; i++){
       if(inSquare(imagesPos[i], x, y)){
-        console.log("image" + i);
+        stateRef.current = dropping;
+        dropObjRef.current.objNum = i;
+        dropObjRef.current.y = -0.5;
+        dropObjRef.current.speed = 0;
+        dropObjRef.current.bounced = false;
       }
     }
   }
