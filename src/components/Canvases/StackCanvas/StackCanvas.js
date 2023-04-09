@@ -223,6 +223,7 @@ function StackCanvas() {
         dropObjRef.current.speed = 0;
         dropObjRef.current.bounced = false;
         usedRef.current[i] = true;
+        break;
       }
     }
   }
