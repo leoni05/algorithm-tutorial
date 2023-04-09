@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './StackCanvas.css';
-import duck from '../../../img/duck.svg';
-import cube from '../../../img/cube.svg';
-import car from '../../../img/car.svg';
-import gameboy from '../../../img/gameboy.svg';
-import cat from '../../../img/cat.svg';
+import duckSvg from '../../../img/duck.svg';
+import cubeSvg from '../../../img/cube.svg';
+import carSvg from '../../../img/car.svg';
+import gameboySvg from '../../../img/gameboy.svg';
+import catSvg from '../../../img/cat.svg';
 
 function StackCanvas() {
   const canvasRef = useRef(null); // 캔버스 접근을 위한 useRef
@@ -22,7 +22,7 @@ function StackCanvas() {
 
   const popBox = { x: 3/8, y: 13/16, width: 5/8, height: 3/16 }; // pop 글자 박스
   const images = useRef([]); // 이미지 객체들 저장하는 배열
-  const imageSrc = [ duck, cube, car, gameboy, cat ];
+  const imageSrc = [ duckSvg, cubeSvg, carSvg, gameboySvg, catSvg ];
   const imagesPos = [ // 각 이미지의 초기위치 및 너비, 높이
     { x: 0.434, y: 0.09, width: 0.231, height: 0.225 }, // duck
     { x: 0.712, y: 0.027, width: 0.231, height: 0.212 }, // cube
@@ -30,6 +30,17 @@ function StackCanvas() {
     { x: 0.456, y: 0.407, width: 0.209, height: 0.302 }, // gameboy
     { x: 0.682, y: 0.492, width: 0.292, height: 0.285 }, // cat
   ];
+  const duck = 0;
+  const cube = 1;
+  const car = 2;
+  const gameboy = 3;
+  const cat = 4;
+
+  const pending = 0; // 입력 대기 상태
+  const dropping = 1; // 물체가 떨어지고 있는 중
+  const popping = 2; // 스택에서 물체 빼고 있는 중
+  const stateRef = useRef(0); // 애니메이션 상태
+
 
   // 1 frame을 위한 렌더링
   function renderFrame() {
@@ -118,14 +129,31 @@ function StackCanvas() {
     };
   }, []);
 
+  // x,y 좌표가 square에 포함되는가
+  function inSquare(square, x, y) {
+    return square.x <= x && x <= square.x + square.width
+      && square.y <= y && y <= square.y + square.height;
+  }
+
   // canvas 기준 click 된 좌표를 0~1 사이 값으로 계산
   function handleCanvasClick(event) {
+    // pending일 때만 입력 받기
+    if(stateRef.current != pending) return;
+
     const rect = canvasRef.current.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
     x /= canvasRef.current.offsetWidth;
     y /= canvasRef.current.offsetHeight;
 
+    if(inSquare(popBox, x, y)){
+       console.log("popbox");
+    }
+    for(var i=0; i<5; i++){
+      if(inSquare(imagesPos[i], x, y)){
+        console.log("image" + i);
+      }
+    }
   }
 
   return (
