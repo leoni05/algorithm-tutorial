@@ -41,6 +41,7 @@ function StackCanvas() {
   const popping = 2; // 스택에서 물체 빼고 있는 중
   const stateRef = useRef(0); // 애니메이션 상태
   const g = 0.001; // 중력 가속도
+  const popTime = 500; // pop 하는 데 걸리는 시간
   const dropObjRef = useRef({ objNum: -1, y: -0.5, speed: 0, bounced: false, }); // 떨어지고 있는 물체
   const popObjRef = useRef({ objNum: -1, popBeginTime: -1 }); // pop되고 있는 물체
   const usedRef = useRef([ false,false,false,false,false ]); // 각 물체가 사용되었는지(dropping, staked, popping)
@@ -96,11 +97,26 @@ function StackCanvas() {
       ctx.drawImage(images.current[obj], x * canvasW, y * canvasH,
         imagesPos[obj].width * canvasW, imagesPos[obj].height * canvasH);
     }
+
+    if(stateRef.current == dropping) {
+      proceedDropping(nowTime);
+    }
+    if(stateRef.current == popping) {
+      proceedPopping(nowTime);
+    }
   }
 
   // 떨어짐 진행시키기
-  function proceedDropping() {
+  function proceedDropping(nowTime) {
 
+  }
+
+  // pop 진행시키기
+  function proceedPopping(nowTime) {
+    if(nowTime - popObjRef.current.popBeginTime >= popTime){
+      stateRef.current = pending;
+      usedRef.current[popObjRef.current.objNum] = false;
+    }
   }
 
   // animation 1 frame을 그릴 때 호출
@@ -167,8 +183,12 @@ function StackCanvas() {
     x /= canvasRef.current.offsetWidth;
     y /= canvasRef.current.offsetHeight;
 
-    if(inSquare(popBox, x, y)){
-       console.log("popbox");
+    // pop box 클릭
+    if(inSquare(popBox, x, y) && stackRef.current.length > 1){
+       const nowTime = new Date().getTime();
+       stateRef.current = popping;
+       popObjRef.current.objNum = stackRef.current.pop().objNum;
+       popObjRef.current.popBeginTime = nowTime;
     }
 
     for(var i=0; i<5; i++){
