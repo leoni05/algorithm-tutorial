@@ -100,6 +100,12 @@ function StackCanvas() {
 
     if(stateRef.current == dropping) {
       proceedDropping(nowTime);
+      // 떨어지는 물체 그리기
+      const obj = dropObjRef.current.objNum;
+      const x = ((3/8) - imagesPos[obj].width)/2;
+      const y = dropObjRef.current.y;
+      ctx.drawImage(images.current[obj], x * canvasW, y * canvasH,
+              imagesPos[obj].width * canvasW, imagesPos[obj].height * canvasH);
     }
     if(stateRef.current == popping) {
       proceedPopping(nowTime);
@@ -108,7 +114,25 @@ function StackCanvas() {
 
   // 떨어짐 진행시키기
   function proceedDropping(nowTime) {
+    var dropObj = dropObjRef.current;
+    dropObj.speed += g;
+    dropObj.y += dropObj.speed;
 
+    // 스택 최상단에 도달함 체크
+    const last = stackRef.current.length - 1;
+    const minY = stackRef.current[last].height - imagesPos[dropObj.objNum].height; // 물체가 내려갈 수 있는 y 좌표 최대값
+    if(dropObj.y >= minY){
+      dropObj.y = minY;
+
+      if(dropObj.bounced == 0){
+        dropObj.bounced = 1;
+        dropObj.speed = (dropObj.speed / 5) * (-1);
+      }
+      else {
+        stateRef.current = pending;
+        stackRef.current.push({ objNum: dropObj.objNum, height: minY });
+      }
+    }
   }
 
   // pop 진행시키기
@@ -192,12 +216,13 @@ function StackCanvas() {
     }
 
     for(var i=0; i<5; i++){
-      if(inSquare(imagesPos[i], x, y)){
+      if(inSquare(imagesPos[i], x, y) && usedRef.current[i] == false && stackRef.current.length <= 4){
         stateRef.current = dropping;
         dropObjRef.current.objNum = i;
         dropObjRef.current.y = -0.5;
         dropObjRef.current.speed = 0;
         dropObjRef.current.bounced = false;
+        usedRef.current[i] = true;
       }
     }
   }
