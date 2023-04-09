@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './StackCanvas.css';
+import duck from '../../../img/duck.svg';
+import cube from '../../../img/cube.svg';
+import car from '../../../img/car.svg';
+import gameboy from '../../../img/gameboy.svg';
+import cat from '../../../img/cat.svg';
 
 function StackCanvas() {
   const canvasRef = useRef(null); // 캔버스 접근을 위한 useRef
@@ -15,7 +20,16 @@ function StackCanvas() {
   // orbitron 폰트가 살짝 올라가 있어, y좌표 조금 내리기 위함
   const adjustFontY = 0.004;
 
-  const popBox = { x: 3/8, y: 13/16, width: 5/8, height: 3/16 };
+  const popBox = { x: 3/8, y: 13/16, width: 5/8, height: 3/16 }; // pop 글자 박스
+  const images = useRef([]); // 이미지 객체들 저장하는 배열
+  const imageSrc = [ duck, cube, car, gameboy, cat ];
+  const imagesPos = [ // 각 이미지의 초기위치 및 너비, 높이
+    { x: 0.434, y: 0.09, width: 0.231, height: 0.225 }, // duck
+    { x: 0.712, y: 0.027, width: 0.231, height: 0.212 }, // cube
+    { x: 0.659, y: 0.252, width: 0.315, height: 0.248 }, // car
+    { x: 0.456, y: 0.407, width: 0.209, height: 0.302 }, // gameboy
+    { x: 0.682, y: 0.492, width: 0.292, height: 0.285 }, // cat
+  ];
 
   // 1 frame을 위한 렌더링
   function renderFrame() {
@@ -49,6 +63,12 @@ function StackCanvas() {
     const popX = popBox.x + popBox.width/2;
     const popY = popBox.y + popBox.height/2 + adjustFontY;
     ctx.fillText("POP", popX * canvasW, popY * canvasH);
+
+    // image 그리기
+    for(var i=0; i<5; i++){
+      ctx.drawImage(images.current[i], imagesPos[i].x * canvasW, imagesPos[i].y * canvasH,
+        imagesPos[i].width * canvasW, imagesPos[i].height * canvasH);
+    }
   }
 
   // animation 1 frame을 그릴 때 호출
@@ -77,11 +97,22 @@ function StackCanvas() {
     setCanvasHeight(canvasRef.current.offsetHeight * 2);
   }
 
-  // 초기 canvas 사이즈 세팅, resize 이벤트 리스너 추가
+  // images 배열에 이미지 세팅
+  function setImages() {
+    const imgs = images.current;
+    for(var i=0; i<5; i++){
+      imgs[i] = new Image();
+      imgs[i].src = imageSrc[i];
+    }
+  }
+
+  // 초기 canvas 사이즈 세팅, 이미지 세팅, resize 이벤트 리스너 추가
   useEffect(() => {
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
     canvasRef.current.onselectstart = function () { return false; }
+    setImages();
+
     return () => {
       window.removeEventListener('resize', setCanvasSize);
     };
