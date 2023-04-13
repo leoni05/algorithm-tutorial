@@ -39,7 +39,7 @@ function StackCanvas() {
   const dropping = 1; // 물체가 떨어지고 있는 중
   const popping = 2; // 스택에서 물체 빼고 있는 중
   const stateRef = useRef(0); // 애니메이션 상태
-  const g = 3.6; // 중력 가속도(1초당 3.6px/s 속도 증가)
+  const g = 3.6; // 중력 가속도(1초당 3.6h/s 속도 증가)
   const previousTimeRef = useRef(-1); // 이전에 프레임 그렸던 시각 timestamp
   const popTime = 500; // pop 하는 데 걸리는 시간
   const dropObjRef = useRef({ objNum: -1, y: -0.5, speed: 0, bounced: false, }); // 떨어지고 있는 물체
