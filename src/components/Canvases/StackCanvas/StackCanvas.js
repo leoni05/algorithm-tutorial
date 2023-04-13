@@ -15,7 +15,6 @@ function StackCanvas() {
   const [canvasWidth, setCanvasWidth] = useState(0);
   const [canvasHeight, setCanvasHeight] = useState(0);
 
-  const animTime = 300; // 애니메이션 효과 지속시간 (ms 단위)
   const fontSize = 0.07;
   // orbitron 폰트가 살짝 올라가 있어, y좌표 조금 내리기 위함
   const adjustFontY = 0.004;
@@ -40,7 +39,8 @@ function StackCanvas() {
   const dropping = 1; // 물체가 떨어지고 있는 중
   const popping = 2; // 스택에서 물체 빼고 있는 중
   const stateRef = useRef(0); // 애니메이션 상태
-  const g = 0.001; // 중력 가속도
+  const g = 3.6; // 중력 가속도(1초당 3.6px/s 속도 증가)
+  const previousTimeRef = useRef(-1); // 이전에 프레임 그렸던 시각 timestamp
   const popTime = 500; // pop 하는 데 걸리는 시간
   const dropObjRef = useRef({ objNum: -1, y: -0.5, speed: 0, bounced: false, }); // 떨어지고 있는 물체
   const popObjRef = useRef({ objNum: -1, popBeginTime: -1 }); // pop되고 있는 물체
@@ -98,8 +98,8 @@ function StackCanvas() {
         imagesPos[obj].width * canvasW, imagesPos[obj].height * canvasH);
     }
 
-    if(stateRef.current == dropping) {
-      proceedDropping(nowTime);
+    if(stateRef.current == dropping && previousTimeRef.current != -1) {
+      proceedDropping(nowTime - previousTimeRef.current);
       // 떨어지는 물체 그리기
       const obj = dropObjRef.current.objNum;
       const x = ((3/8) - imagesPos[obj].width)/2;
@@ -110,13 +110,16 @@ function StackCanvas() {
     if(stateRef.current == popping) {
       proceedPopping(nowTime);
     }
+
+    // timestamp 갱신
+    previousTimeRef.current = nowTime;
   }
 
   // 떨어짐 진행시키기
-  function proceedDropping(nowTime) {
+  function proceedDropping(deltaTime) {
     var dropObj = dropObjRef.current;
-    dropObj.speed += g;
-    dropObj.y += dropObj.speed;
+    dropObj.speed += g * deltaTime / 1000;
+    dropObj.y += dropObj.speed * deltaTime / 1000;
 
     // 스택 최상단에 도달함 체크
     const last = stackRef.current.length - 1;
